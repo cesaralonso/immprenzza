@@ -1,0 +1,106 @@
+<div class="widgets">
+    <div class="row">
+        <ba-card title="Listado" baCardClass="with-scroll" class="data-table-container">
+            <!--
+            <div class="row">
+                <div class="col-sm-2">
+                    <label class="label-control">Registros por página</label>
+                    <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                        <option [ngValue]="5">5</option>
+                        <option [ngValue]="10">10</option>
+                        <option [ngValue]="15">15</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <label class="col-sm-12 label-control">Ordenar por</label>
+                    </div>
+                    <div class="row">
+                        <div class="offset-sm-1 col-sm-5">
+                            <div class="row">
+                                <select class="form-control input-sm" [(ngModel)]="sortBy">
+                                    <option ngValue="nombre">Nombre de Obra</option>
+                                    <option ngValue="contacto_direccion">Nombre de contacto</option>
+                                    <option ngValue="contacto_correo">Correo de contacto</option>
+                                    <option ngValue="tipo">Tipo de Proyecto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="offset-sm-1 col-sm-5">
+                            <div class="row">
+                                <select class="form-control input-sm" [(ngModel)]="sortOrder">
+                                    <option ngValue="asc">Ascendente</option>
+                                    <option ngValue="desc">Descendente</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="panel panel-default">
+                <!--<div class="panel-heading">Información de Usuarios</div>-->
+
+                <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%"></th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="usuario">Usuario</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="telefono">Teléfono</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="statususuario">statususuario</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="emailsms">Email sms</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="rol">Rol</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="rol">Descripción</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data">
+                            <td>
+                                <button (click)="editUserModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idusuario)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td>{{item.usuario}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.telefono}}</td>
+                            <td>{{item.statususuario}}</td>
+                            <td>{{item.emailsms}}</td>
+                            <td>{{item.rol}}</td>
+                            <td>{{item.descripcion}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button (click)="addUserModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
+        </div>
+    </div>
+</div>

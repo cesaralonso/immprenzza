@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+      <div class="modal-content" style="overflow-y: initial !important">
+          
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+            <div class="modal-header">
+              <h4 class="modal-title">Agregar  Usuario</h4>
+              <button class="close" aria-label="Close" (click)="close()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          
+              <ba-card cardTitle="Información de Usuario">
+          
+                <div class="form-group row" [ngClass]="{'has-error': (!idrol.valid && idrol.touched), 'has-success': (idrol.valid && idrol.touched)}">
+                  <label for="inputidrol" class="col-sm-2 form-control-label">Estatus Usuario</label>
+                  <div class="col-sm-10">
+                    <select id="inputidrol" class="form-control" [formControl]="idrol">
+                      <option value="{{value.idrol}}" *ngFor="let value of _roles">
+                        {{value.rol}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+        
+                <div class="form-group row" [ngClass]="{'has-error': (!usuario.valid && usuario.touched), 'has-success': (usuario.valid && usuario.touched)}">
+                  <label for="inputusuario" class="col-sm-2 form-control-label">Usuario</label>
+                  <div class="col-sm-10">
+                    <input [formControl]="usuario" type="text" class="form-control" id="inputusuario" placeholder="usuario">
+                  </div>
+                </div>
+        
+                <div class="form-group row" [ngClass]="{'has-error': (!contrasena.valid && contrasena.touched), 'has-success': (contrasena.valid && contrasena.touched)}">
+                  <label for="inputcontrasena" class="col-sm-2 form-control-label">Contraseña</label>
+                  <div class="col-sm-10">
+                    <input [formControl]="contrasena" type="password" class="form-control" id="inputcontrasena" placeholder="contraseña">
+                  </div>
+                </div>
+        
+                <div class="form-group row" [ngClass]="{'has-error': (!nombre.valid && nombre.touched), 'has-success': (nombre.valid && nombre.touched)}">
+                  <label for="inputnombre" class="col-sm-2 form-control-label">Nombre</label>
+                  <div class="col-sm-10">
+                    <input [formControl]="nombre" type="text" class="form-control" id="inputnombre" placeholder="nombre">
+                  </div>
+                </div>
+        
+                <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+                  <label for="inputemail" class="col-sm-2 form-control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input [formControl]="email" type="email" class="form-control" id="inputemail" placeholder="email">
+                  </div>
+                </div>
+        
+                <div class="form-group row" [ngClass]="{'has-error': (!telefono.valid && telefono.touched), 'has-success': (telefono.valid && telefono.touched)}">
+                  <label for="inputtelefono" class="col-sm-2 form-control-label">Teléfono</label>
+                  <div class="col-sm-10">
+                    <input [formControl]="telefono" type="text" class="form-control" id="inputtelefono" placeholder="teléfono">
+                  </div>
+                </div>
+        
+                <div class="form-group row" [ngClass]="{'has-error': (!idstatususuario.valid && idstatususuario.touched), 'has-success': (idstatususuario.valid && idstatususuario.touched)}">
+                  <label for="inputidstatususuario" class="col-sm-2 form-control-label">Estatus Usuario</label>
+                  <div class="col-sm-10">
+                    <select id="inputidstatususuario" class="form-control" [formControl]="idstatususuario">
+                      <option value="{{value.idestatususuario}}" *ngFor="let value of _estatususuarios">
+                        {{value.estatususuario}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+        
+              </ba-card>
+          
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+              <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" type="submit">Aceptar</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</div>
+

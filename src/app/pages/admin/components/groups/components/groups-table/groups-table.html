@@ -1,0 +1,50 @@
+<div class="widgets">
+    <div class="row">
+        <ba-card title="Listado" baCardClass="with-scroll" class="data-table-container">
+
+            <div class="panel panel-default">
+                <!-- <div class="panel-heading">Información</div> -->
+
+                <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%"></th>
+                            <th style="width: 30%">
+                                <mfDefaultSorter by="rol">Rol</mfDefaultSorter>
+                            </th>
+                            <th style="width: 30%">
+                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                            </th>
+                            <th style="width: 30%">
+                                <mfDefaultSorter by="visible">Visible</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data">
+                            <td>
+                                <button (click)="editGroupsModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idrol)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td>{{item.rol}}</td>
+                            <td>{{item.descripcion}}</td>
+                            <td>{{item.visible}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button (click)="addGroupsModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
+        </div>
+    </div>
+</div>
