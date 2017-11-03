@@ -7,57 +7,19 @@
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
                         <tr>
-                            <th style="width: 15%"></th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+
+                            <th style="width: 20%"></th>
+                            <th style="width: 20%">
+                                <mfDefaultSorter by="cantidadAbonada">Cantidad Abonada</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccion">Dirección</mfDefaultSorter>
+                            <th style="width: 20%">
+                                <mfDefaultSorter by="fecha">fecha</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="medidasterreno">Medidas de Terreno</mfDefaultSorter>
+                            <th style="width: 20%">
+                                <mfDefaultSorter by="cantidadRestante">Cantidad Restante</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="medidasconstruccion">Medidas de Construcción</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="fechainicio">Fecha de Inicio</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="fechafin">Fecha de Fin</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="presupuesto">Presupuesto</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="idrazonsocialcliente">Razón Social Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialcontratista">Razón Social Contratista</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialconstructor">Razón Social Constructor</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialasociado">Razón Social Asociado</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="posiciongps">Posición GPS</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="observaciones">Observaciones</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="desctipoabono">Desc Tipo Abono</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccioncliente">Dirección del Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="claveestatusabono">Clave Estatus Abono</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="tipoabono">Tipo Abono</mfDefaultSorter>
+                            <th style="width: 20%">
+                                <mfDefaultSorter by="Orden_idOrden">Orden</mfDefaultSorter>
                             </th>
                         </tr>
                     </thead>
@@ -65,27 +27,15 @@
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editAbonosModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idabono)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idabono, item.descripcion)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idabono)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idAbono)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idAbono, item.cantidadAbonada)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idAbono)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.direccion }}</td>
-                            <td>{{ item.medidasterreno }}</td>
-                            <td>{{ item.medidasconstruccion }}</td>
-                            <td>{{ item.fechainicio | date:'dd/MM/y' }}</td>
-                            <td>{{ item.fechafin | date:'dd/MM/y' }}</td>
-                            <td>{{ item.presupuesto }}</td>
-                            <td>{{ item.razonsocialcliente }}</td>
-                            <td>{{ item.razonsocialcontratista }}</td>
-                            <td>{{ item.razonsocialconstructor }}</td>
-                            <td>{{ item.razonsocialasociado }}</td>
-                            <td>{{ item.posiciongps }}</td>
-                            <td>{{ item.observaciones }}</td>
-                            <td>{{ item.desctipoabono }}</td>
-                            <td>{{ item.direccioncliente }}</td>
-                            <td>{{ item.claveestatusabono }}</td>
-                            <td>{{ item.tipoabono }}</td>
+                            <td>{{ item.cantidadAbonada }}</td>
+                            <td>{{ item.fecha | date:'dd/MM/y'}}</td>
+                            <td>{{ item.cantidadRestante }}</td>
+                            <td>{{ item.Orden_idOrden }}</td>
+
                         </tr>
                     </tbody>
                     <tfoot>
@@ -104,5 +54,5 @@
             <button (click)="addAbonosModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
-    
+
 </div>

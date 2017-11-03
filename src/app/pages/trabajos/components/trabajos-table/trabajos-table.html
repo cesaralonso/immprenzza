@@ -4,88 +4,74 @@
             <div class="panel panel-default">
                 <!-- <div class="panel-heading">Información de Trabajos</div> -->
 
+
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
                         <tr>
-                            <th style="width: 15%"></th>
+                            <th style="width: 40%"></th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                                <mfDefaultSorter by="cantidad">Cantidad</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="direccion">Dirección</mfDefaultSorter>
+                                <mfDefaultSorter by="archivo">Archivo</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="medidasterreno">Medidas de Terreno</mfDefaultSorter>
+                                <mfDefaultSorter by="foto">Foto</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="f_entregaEsperada">Entrega Esperada</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="medidasconstruccion">Medidas de Construcción</mfDefaultSorter>
+                                <mfDefaultSorter by="f_entregaReal">Entrega Real</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fechainicio">Fecha de Inicio</mfDefaultSorter>
+                                <mfDefaultSorter by="status">Status</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="especificaciones">Especificaciones</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fechafin">Fecha de Fin</mfDefaultSorter>
+                                <mfDefaultSorter by="f_recibe">Fecha Recibe </mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="presupuesto">Presupuesto</mfDefaultSorter>
+                                <mfDefaultSorter by="total">Total</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="idrazonsocialcliente">Razón Social Cliente</mfDefaultSorter>
+                                <mfDefaultSorter by="Personal_idPersonal">Personal </mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialcontratista">Razón Social Contratista</mfDefaultSorter>
+                                <mfDefaultSorter by="TipoTrabajo_idTipoTrabajo">Tipo Trabajo</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialconstructor">Razón Social Constructor</mfDefaultSorter>
+                                <mfDefaultSorter by="Orden_idOrden">Orden</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialasociado">Razón Social Asociado</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="posiciongps">Posición GPS</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="observaciones">Observaciones</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="desctipotrabajo">Desc Tipo Trabajo</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccioncliente">Dirección del Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="claveestatustrabajo">Clave Estatus Trabajo</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="tipotrabajo">Tipo Trabajo</mfDefaultSorter>
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editTrabajosModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idtrabajo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idtrabajo, item.descripcion)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idtrabajo)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idTrabajo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idTrabajo, item.cantidad)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idTrabajo)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.direccion }}</td>
-                            <td>{{ item.medidasterreno }}</td>
+                            <td>{{ item.cantidad }}</td>
+                            <td>{{ item.archivo }}</td>
+                            <td>{{ item.foto }}</td>
                             <td>{{ item.medidasconstruccion }}</td>
-                            <td>{{ item.fechainicio | date:'dd/MM/y' }}</td>
-                            <td>{{ item.fechafin | date:'dd/MM/y' }}</td>
-                            <td>{{ item.presupuesto }}</td>
-                            <td>{{ item.razonsocialcliente }}</td>
-                            <td>{{ item.razonsocialcontratista }}</td>
-                            <td>{{ item.razonsocialconstructor }}</td>
-                            <td>{{ item.razonsocialasociado }}</td>
-                            <td>{{ item.posiciongps }}</td>
-                            <td>{{ item.observaciones }}</td>
-                            <td>{{ item.desctipotrabajo }}</td>
-                            <td>{{ item.direccioncliente }}</td>
-                            <td>{{ item.claveestatustrabajo }}</td>
-                            <td>{{ item.tipotrabajo }}</td>
+                            <td>{{ item.f_entregaEsperada | date:'dd/MM/y' }}</td>
+                            <td>{{ item.f_entregaReal | date:'dd/MM/y' }}</td>
+                            <td>{{ item.status }}</td>
+                            <td>{{ item.especificaciones }}</td>
+                            <td>{{ item.f_recibe | date:'dd/MM/y' }}</td>
+                            <td>{{ item.total }}</td>
+                            <td>{{ item.Personal_idPersonal }}</td>
+                            <td>{{ item.TipoTrabajo_idTipoTrabajo }}</td>
+                            <td>{{ item.Orden_idOrden }}</td>
+
                         </tr>
                     </tbody>
                     <tfoot>
@@ -104,5 +90,5 @@
             <button (click)="addTrabajosModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
-    
+
 </div>

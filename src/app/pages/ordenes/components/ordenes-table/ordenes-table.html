@@ -7,85 +7,60 @@
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
                         <tr>
-                            <th style="width: 15%"></th>
+                            <th style="width: 50%"></th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                                <mfDefaultSorter by="factura">Factura</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="direccion">Dirección</mfDefaultSorter>
+                                <mfDefaultSorter by="fecha">Fecha</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="medidasterreno">Medidas de Terreno</mfDefaultSorter>
+                                <mfDefaultSorter by="status_avance">Status Avance</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="medidasconstruccion">Medidas de Construcción</mfDefaultSorter>
+                                <mfDefaultSorter by="status_pago">Status Pago</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fechainicio">Fecha de Inicio</mfDefaultSorter>
+                                <mfDefaultSorter by="subtotal">SubTotal</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fechafin">Fecha de Fin</mfDefaultSorter>
+                                <mfDefaultSorter by="total">Total</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="presupuesto">Presupuesto</mfDefaultSorter>
+                                <mfDefaultSorter by="iva">Iva</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="deuda">Deuda</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="idrazonsocialcliente">Razón Social Cliente</mfDefaultSorter>
+                                <mfDefaultSorter by="f_limite">Fecha Limite</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialcontratista">Razón Social Contratista</mfDefaultSorter>
+                                <mfDefaultSorter by="Cliente_idCliente">Cliente</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialconstructor">Razón Social Constructor</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialasociado">Razón Social Asociado</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="posiciongps">Posición GPS</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="observaciones">Observaciones</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="desctipoorden">Desc Tipo Orden</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccioncliente">Dirección del Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="claveestatusorden">Clave Estatus Orden</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="tipoorden">Tipo Orden</mfDefaultSorter>
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editOrdenesModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idorden)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idorden, item.descripcion)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idorden)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idOrden)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idOrden, item.factura)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idOrden)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.direccion }}</td>
-                            <td>{{ item.medidasterreno }}</td>
-                            <td>{{ item.medidasconstruccion }}</td>
-                            <td>{{ item.fechainicio | date:'dd/MM/y' }}</td>
-                            <td>{{ item.fechafin | date:'dd/MM/y' }}</td>
-                            <td>{{ item.presupuesto }}</td>
-                            <td>{{ item.razonsocialcliente }}</td>
-                            <td>{{ item.razonsocialcontratista }}</td>
-                            <td>{{ item.razonsocialconstructor }}</td>
-                            <td>{{ item.razonsocialasociado }}</td>
-                            <td>{{ item.posiciongps }}</td>
-                            <td>{{ item.observaciones }}</td>
-                            <td>{{ item.desctipoorden }}</td>
-                            <td>{{ item.direccioncliente }}</td>
-                            <td>{{ item.claveestatusorden }}</td>
-                            <td>{{ item.tipoorden }}</td>
+                            <td>{{ item.factura }}</td>
+                            <td>{{ item.fecha | date:'dd/MM/y'  }}</td>
+                            <td>{{ item.status_avance }}</td>
+                            <td>{{ item.status_pago }}</td>
+                            <td>{{ item.subtotal }}</td>
+                            <td>{{ item.total }}</td>
+                            <td>{{ item.iva }}</td>
+                            <td>{{ item.deuda }}</td>
+                            <td>{{ item.f_limite | date:'dd/MM/y'  }}</td>
+                            <td>{{ item.Cliente_idCliente }}</td>
+
                         </tr>
                     </tbody>
                     <tfoot>
@@ -104,5 +79,5 @@
             <button (click)="addOrdenesModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
-    
+
 </div>
