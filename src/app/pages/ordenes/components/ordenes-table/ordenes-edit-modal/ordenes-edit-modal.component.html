@@ -1,0 +1,89 @@
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="modal-content" style="overflow-y: initial !important">
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="modal-header">
+          <h4 class="modal-title">Modificar Orden {{descripcion}}</h4>
+          <button class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          <ba-card cardTitle="Información de la Orden">
+
+            <div class="form-group row" [ngClass]="{'has-error': (!facturaAC.valid && facturaAC.touched), 'has-success': (facturaAC.valid && facturaAC.touched)}">
+              <label for="inputfacturaAC" class="col-sm-2 form-control-label">Factura</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="factura" [formControl]="facturaAC" type="text" class="form-control" id="inputfacturaAC" placeholder="Factura" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!fecha.valid && fecha.touched), 'has-success': (fecha.valid && fecha.touched)}">
+              <label for="inputfecha" class="col-sm-2 form-control-label">Fecha</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="fecha" [formControl]="fecha" type="text" class="form-control" id="inputfecha" placeholder="Fecha" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!status_avanceAC.valid && status_avanceAC.touched), 'has-success': (status_avanceAC.valid && status_avanceAC.touched)}">
+              <label for="inputstatus_avanceAC" class="col-sm-2 form-control-label">Status_avance</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="status_avance" [formControl]="status_avanceAC" type="text" class="form-control" id="inputstatus_avanceAC" placeholder="Status_avance" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!status_pagoAC.valid && status_pagoAC.touched), 'has-success': (status_pagoAC.valid && status_pagoAC.touched)}">
+              <label for="inputstatus_pagoAC" class="col-sm-2 form-control-label">Status_pago</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="status_pago" [formControl]="status_pagoAC" type="text" class="form-control" id="inputstatus_pagoAC" placeholder="Status_pago" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!subtotalAC.valid && subtotalAC.touched), 'has-success': (subtotalAC.valid && subtotalAC.touched)}">
+              <label for="inputsubtotalAC" class="col-sm-2 form-control-label">Subtotal</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="subtotal" [formControl]="subtotalAC" type="text" class="form-control" id="inputsubtotalAC" placeholder="Subtotal" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!totalAC.valid && totalAC.touched), 'has-success': (totalAC.valid && totalAC.touched)}">
+              <label for="inputtotalAC" class="col-sm-2 form-control-label">Total</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="total" [formControl]="totalAC" type="text" class="form-control" id="inputtotalAC" placeholder="Total" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!ivaAC.valid && ivaAC.touched), 'has-success': (ivaAC.valid && ivaAC.touched)}">
+              <label for="inputivaAC" class="col-sm-2 form-control-label">Iva</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="iva" [formControl]="ivaAC" type="text" class="form-control" id="inputivaAC" placeholder="Iva" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!deudaAC.valid && deudaAC.touched), 'has-success': (deudaAC.valid && deudaAC.touched)}">
+              <label for="inputdeudaAC" class="col-sm-2 form-control-label">Deuda</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="deuda" [formControl]="deudaAC" type="text" class="form-control" id="inputdeudaAC" placeholder="Deuda" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!f_limiteAC.valid && f_limiteAC.touched), 'has-success': (f_limiteAC.valid && f_limiteAC.touched)}">
+              <label for="inputf_limiteAC" class="col-sm-2 form-control-label">F_limite</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="f_limite" [formControl]="f_limiteAC" type="text" class="form-control" id="inputf_limiteAC" placeholder="F_limite" >
+              </div>
+            </div>
+
+
+          </ba-card>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+          <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" (click)="onSubmit(form.value)">Aceptar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

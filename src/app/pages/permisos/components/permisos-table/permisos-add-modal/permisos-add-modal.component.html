@@ -1,0 +1,47 @@
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="modal-content" style="overflow-y: initial !important">
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Permiso {{descripcion}}</h4>
+          <button class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          <ba-card cardTitle="Información de la Permiso">
+
+            <div class="form-group row" [ngClass]="{'has-error': (!accesoAC.valid && accesoAC.touched), 'has-success': (accesoAC.valid && accesoAC.touched)}">
+              <label for="inputaccesoAC" class="col-sm-2 form-control-label">Acceso</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="acceso" [formControl]="accesoAC" type="text" class="form-control" id="inputaccesoAC" placeholder="Acceso" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!Rol_idRolAC.valid && Rol_idRolAC.touched), 'has-success': (Rol_idRolAC.valid && Rol_idRolAC.touched)}">
+              <label for="inputRol_idRolAC" class="col-sm-2 form-control-label">Rol</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="Rol_idRol" [formControl]="Rol_idRolAC" type="text" class="form-control" id="inputRol_idRolAC" placeholder="Rol" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!Modulo_idModuloAC.valid && Modulo_idModuloAC.touched), 'has-success': (Modulo_idModuloAC.valid && Modulo_idModuloAC.touched)}">
+              <label for="inputModulo_idModuloAC" class="col-sm-2 form-control-label">Modulo</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="Modulo_idModulo" [formControl]="Modulo_idModuloAC" type="text" class="form-control" id="inputModulo_idModuloAC" placeholder="Modulo" >
+              </div>
+            </div>
+
+
+          </ba-card>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+          <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" (click)="onSubmit(form.value)">Aceptar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

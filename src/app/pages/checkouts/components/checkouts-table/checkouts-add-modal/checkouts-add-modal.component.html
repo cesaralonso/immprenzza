@@ -1,0 +1,53 @@
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="modal-content" style="overflow-y: initial !important">
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Checkout {{descripcion}}</h4>
+          <button class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          <ba-card cardTitle="Información de la Checkout">
+
+            <div class="form-group row" [ngClass]="{'has-error': (!entradaAC.valid && entradaAC.touched), 'has-success': (entradaAC.valid && entradaAC.touched)}">
+              <label for="inputentradaAC" class="col-sm-2 form-control-label">Entrada</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="entrada" [formControl]="entradaAC" type="text" class="form-control" id="inputentradaAC" placeholder="Entrada" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!salidaAC.valid && salidaAC.touched), 'has-success': (salidaAC.valid && salidaAC.touched)}">
+              <label for="inputsalidaAC" class="col-sm-2 form-control-label">Salida</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="salida" [formControl]="salidaAC" type="text" class="form-control" id="inputsalidaAC" placeholder="Salida">
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!tiempo_trabajadoAC.valid && tiempo_trabajadoAC.touched), 'has-success': (tiempo_trabajadoAC.valid && tiempo_trabajadoAC.touched)}">
+              <label for="inputtiempo_trabajadoAC" class="col-sm-2 form-control-label">TiempoTrabajado</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="tiempo_trabajado" [formControl]="tiempo_trabajadoAC" type="text" class="form-control" id="inputtiempo_trabajadoAC" placeholder="TiempoTrabajado">
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!Personal_idPersonalAC.valid && Personal_idPersonalAC.touched), 'has-success': (Personal_idPersonalAC.valid && Personal_idPersonalAC.touched)}">
+              <label for="inputPersonal_idPersonalAC" class="col-sm-2 form-control-label">Personal</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="Personal_idPersonal" [formControl]="Personal_idPersonalAC" type="text" class="form-control" id="inputPersonal_idPersonalAC" placeholder="Personal">
+              </div>
+            </div>
+
+          </ba-card>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+          <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" (click)="onSubmit(form.value)">Aceptar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

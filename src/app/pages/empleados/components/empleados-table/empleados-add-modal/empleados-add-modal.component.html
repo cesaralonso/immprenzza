@@ -1,0 +1,60 @@
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="modal-content" style="overflow-y: initial !important">
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Personal {{descripcion}}</h4>
+          <button class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          <ba-card cardTitle="Información de la Personal">
+
+            <div class="form-group row" [ngClass]="{'has-error': (!f_ingresoAC.valid && f_ingresoAC.touched), 'has-success': (f_ingresoAC.valid && f_ingresoAC.touched)}">
+              <label for="inputf_ingresoAC" class="col-sm-2 form-control-label">F_ingreso</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="f_ingreso" [formControl]="f_ingresoAC" type="text" class="form-control" id="inputf_ingresoAC" placeholder="F_ingreso" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!nominaAC.valid && nominaAC.touched), 'has-success': (nominaAC.valid && nominaAC.touched)}">
+              <label for="inputnominaAC" class="col-sm-2 form-control-label">Nomina</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="nomina" [formControl]="nominaAC" type="text" class="form-control" id="inputnominaAC" placeholder="Nomina" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!frec_nominaAC.valid && frec_nominaAC.touched), 'has-success': (frec_nominaAC.valid && frec_nominaAC.touched)}">
+              <label for="inputfrec_nominaAC" class="col-sm-2 form-control-label">Frec_nomina</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="frec_nomina" [formControl]="frec_nominaAC" type="text" class="form-control" id="inputfrec_nominaAC" placeholder="Frec_nomina" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!Persona_idPersonaAC.valid && Persona_idPersonaAC.touched), 'has-success': (Persona_idPersonaAC.valid && Persona_idPersonaAC.touched)}">
+              <label for="inputPersona_idPersonaAC" class="col-sm-2 form-control-label">Persona</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="Persona_idPersona" [formControl]="Persona_idPersonaAC" type="text" class="form-control" id="inputPersona_idPersonaAC" placeholder="Persona" >
+              </div>
+            </div>
+
+            <div class="form-group row" [ngClass]="{'has-error': (!Puesto_idPuestoAC.valid && Puesto_idPuestoAC.touched), 'has-success': (Puesto_idPuestoAC.valid && Puesto_idPuestoAC.touched)}">
+              <label for="inputPuesto_idPuestoAC" class="col-sm-2 form-control-label">Puesto</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="Puesto_idPuesto" [formControl]="Puesto_idPuestoAC" type="text" class="form-control" id="inputPuesto_idPuestoAC" placeholder="Puesto" >
+              </div>
+            </div>
+
+          </ba-card>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+          <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" (click)="onSubmit(form.value)">Aceptar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
