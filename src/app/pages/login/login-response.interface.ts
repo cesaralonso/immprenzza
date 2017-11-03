@@ -1,5 +1,4 @@
 export interface LoginResponseInterface {
-    idRespuesta: number;
-    mensajeRespuesta: string;
-    valorRespuesta: string;
+    success: boolean;
+    result: string[];
 }

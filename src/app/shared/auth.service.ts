@@ -49,11 +49,11 @@ export class AuthService {
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
     }
 
-    login(values: LoginInterface): Observable<LoginResponseInterface> {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}ValidarLoginUsuario`;
+    login(values: LoginInterface): Observable<any> {
+        this.actionUrl = `${this._configuration.ServerWithApiUrl}users/login`;
         const toAdd = JSON.stringify(values);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <LoginResponseInterface>response.json())
+            .map((response: Response) => <any>response.json())
             .catch(this.handleError)
             .do(val => {
                 this.isLoggedIn = true;

@@ -1,5 +1,4 @@
 export interface LoginInterface {
-  claveauth: string;
-  usuarioauth: string;
-  nicknameauth: string;
+  email: string;
+  password: string;
 }
