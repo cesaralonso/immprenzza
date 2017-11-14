@@ -19,13 +19,31 @@ export class ClientesService {
 
 
     constructor(
-        private _http: Http, 
-        private _configuration: Configuration, 
+        private _http: Http,
+        private _configuration: Configuration,
         private localStorageService: LocalStorageService,
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
     }
+
+    all = (): Observable<ClientesResponseInterface> => {
+   return this._http.get(this.endPoint)
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
+  findById = ( id ) : Observable<ClientesResponseInterface> => {
+   return this._http.get(`${this.endPoint}/${id}`)
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
+  create = ( cliente: ClientesInterface ) : Observable<ClientesResponseInterface> => {
+   return this._http.post(this.endPoint, cliente, { headers: this.headers })
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
 
     addClientes = (clientes: ClientesInterface): Observable<ClientesResponseInterface> =>  {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}agregarCliente`;
@@ -61,7 +79,7 @@ export class ClientesService {
 
     getAllClientes = (): Observable<ClientesInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerClientes`;
-       
+
         const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
 
         return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
@@ -71,7 +89,7 @@ export class ClientesService {
 
     deleteClientes = (id: string): Observable<ClientesResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaClientes`;
-       
+
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
             'nicknameauth': credenciales.nicknameauth,

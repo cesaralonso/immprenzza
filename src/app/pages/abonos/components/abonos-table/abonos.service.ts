@@ -19,12 +19,30 @@ export class AbonosService {
 
 
     constructor(
-        private _http: Http, 
-        private _configuration: Configuration, 
+        private _http: Http,
+        private _configuration: Configuration,
         private localStorageService: LocalStorageService,
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
+    }
+
+      all = (): Observable<AbonosResponseInterface> => {
+     return this._http.get(this.endPoint)
+         .map((response: Response) => response.json())
+         .catch(this.handleError);
+    }
+
+    findById = ( id ) : Observable<AbonosResponseInterface> => {
+     return this._http.get(`${this.endPoint}/${id}`)
+         .map((response: Response) => response.json())
+         .catch(this.handleError);
+    }
+
+    create = ( abono: AbonosInterface ) : Observable<AbonosResponseInterface> => {
+     return this._http.post(this.endPoint, abono, { headers: this.headers })
+         .map((response: Response) => response.json())
+         .catch(this.handleError);
     }
 
     addAbonos = (abonos: AbonosInterface): Observable<AbonosResponseInterface> =>  {
@@ -61,7 +79,7 @@ export class AbonosService {
 
     getAllAbonos = (): Observable<AbonosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerAbonos`;
-       
+
         const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
 
         return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
@@ -71,7 +89,7 @@ export class AbonosService {
 
     deleteAbonos = (id: string): Observable<AbonosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaAbonos`;
-       
+
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
             'nicknameauth': credenciales.nicknameauth,

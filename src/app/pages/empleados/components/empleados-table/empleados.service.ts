@@ -19,13 +19,32 @@ export class EmpleadosService {
 
 
     constructor(
-        private _http: Http, 
-        private _configuration: Configuration, 
+        private _http: Http,
+        private _configuration: Configuration,
         private localStorageService: LocalStorageService,
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
     }
+
+    all = (): Observable<EmpleadosResponseInterface> => {
+   return this._http.get(this.endPoint)
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
+  findById = ( id ) : Observable<EmpleadosResponseInterface> => {
+   return this._http.get(`${this.endPoint}/${id}`)
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
+  create = ( personal: EmpleadosInterface ) : Observable<EmpleadosResponseInterface> => {
+   return this._http.post(this.endPoint, personal, { headers: this.headers })
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
 
     addEmpleados = (empleados: EmpleadosInterface): Observable<EmpleadosResponseInterface> =>  {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}agregarPersonal`;
@@ -61,7 +80,7 @@ export class EmpleadosService {
 
     getAllEmpleados = (): Observable<EmpleadosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerEmpleados`;
-       
+
         const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
 
         return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
@@ -71,7 +90,7 @@ export class EmpleadosService {
 
     deleteEmpleados = (id: string): Observable<EmpleadosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaEmpleados`;
-       
+
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
             'nicknameauth': credenciales.nicknameauth,

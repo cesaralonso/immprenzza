@@ -19,13 +19,31 @@ export class PermisosService {
 
 
     constructor(
-        private _http: Http, 
-        private _configuration: Configuration, 
+        private _http: Http,
+        private _configuration: Configuration,
         private localStorageService: LocalStorageService,
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
     }
+
+    all = (): Observable<PermisosResponseInterface> => {
+   return this._http.get(this.endPoint)
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
+  findById = ( id ) : Observable<PermisosResponseInterface> => {
+   return this._http.get(`${this.endPoint}/${id}`)
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
+
+  create = ( permiso: PermisosInterface ) : Observable<PermisosResponseInterface> => {
+   return this._http.post(this.endPoint, permiso, { headers: this.headers })
+       .map((response: Response) => response.json())
+       .catch(this.handleError);
+  }
 
     addPermisos = (permisos: PermisosInterface): Observable<PermisosResponseInterface> =>  {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}agregarPermiso`;
@@ -61,7 +79,7 @@ export class PermisosService {
 
     getAllPermisos = (): Observable<PermisosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisos`;
-       
+
         const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
 
         return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
@@ -71,7 +89,7 @@ export class PermisosService {
 
     deletePermisos = (id: string): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaPermisos`;
-       
+
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
             'nicknameauth': credenciales.nicknameauth,
