@@ -102,7 +102,7 @@ export class TrabajosAddModalComponent extends DialogComponent<TrabajosInterface
     this.submitted = true;
     if (this.form.valid) {
       this.service
-        .addAbonos(values)
+        .addTrabajos(values)
         .subscribe(
             (data: any) => {
               this.data = data;

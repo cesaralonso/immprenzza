@@ -45,7 +45,6 @@ export class EmpleadosAddModalComponent extends DialogComponent<EmpleadosInterfa
 
     });
 
-    this.idPersonalAC = this.form.controls['idPersonalAC'];
     this.f_ingresoAC = this.form.controls['f_ingresoAC'];
     this.frec_nominaAC = this.form.controls['frec_nominaAC'];
     this.nominaAC = this.form.controls['nominaAC'];
@@ -56,7 +55,7 @@ export class EmpleadosAddModalComponent extends DialogComponent<EmpleadosInterfa
 
   ngOnInit() {
   }
-  
+
   confirm() {
     this.result = this.data;
     this.close();

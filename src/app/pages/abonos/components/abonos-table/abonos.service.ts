@@ -16,7 +16,7 @@ export class AbonosService {
 
     private actionUrl: string;
     private headers: Headers;
-
+    private endPoint: string;
 
     constructor(
         private _http: Http,
@@ -25,7 +25,7 @@ export class AbonosService {
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
-        this.endPoint = `${this._configuration.ServerWithApiUrl}abono`;
+        this.endPoint = '${this._configuration.ServerWithApiUrl}abono';
     }
 
       all = (): Observable<AbonosResponseInterface> => {
@@ -55,7 +55,7 @@ export class AbonosService {
     }
 
     editAbonos = (abonos: AbonosInterface): Observable<AbonosResponseInterface> =>  {
-        console.log(abonos.claveauth);
+      
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarAbono`;
         const toAdd = JSON.stringify(abonos);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

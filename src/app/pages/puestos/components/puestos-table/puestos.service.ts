@@ -16,6 +16,7 @@ export class PuestosService {
 
     private actionUrl: string;
     private headers: Headers;
+    private endPoint: string;
 
 
     constructor(
@@ -55,7 +56,7 @@ export class PuestosService {
     }
 
     editPuestos = (puestos: PuestosInterface): Observable<PuestosResponseInterface> =>  {
-        console.log(puestos.claveauth);
+      
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarPuesto`;
         const toAdd = JSON.stringify(puestos);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

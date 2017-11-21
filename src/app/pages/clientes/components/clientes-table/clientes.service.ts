@@ -16,6 +16,7 @@ export class ClientesService {
 
     private actionUrl: string;
     private headers: Headers;
+    private endPoint: string;
 
 
     constructor(
@@ -55,7 +56,7 @@ export class ClientesService {
     }
 
     editClientes = (clientes: ClientesInterface): Observable<ClientesResponseInterface> =>  {
-        console.log(clientes.claveauth);
+    
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarCliente`;
         const toAdd = JSON.stringify(clientes);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

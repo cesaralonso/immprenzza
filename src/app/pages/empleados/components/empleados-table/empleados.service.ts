@@ -16,7 +16,7 @@ export class EmpleadosService {
 
     private actionUrl: string;
     private headers: Headers;
-
+    private endPoint: string;
 
     constructor(
         private _http: Http,
@@ -56,7 +56,7 @@ export class EmpleadosService {
     }
 
     editEmpleados = (empleados: EmpleadosInterface): Observable<EmpleadosResponseInterface> =>  {
-        console.log(empleados.claveauth);
+
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarPersonal`;
         const toAdd = JSON.stringify(empleados);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

@@ -43,7 +43,6 @@ export class PermisosAddModalComponent extends DialogComponent<PermisosInterface
 
     });
 
-    this.idPermisoAC = this.form.controls['idPermisoAC'];
     this.accesoAC = this.form.controls['accesoAC'];
     this.Rol_idRolAC = this.form.controls['Rol_idRolAC'];
     this.Modulo_idModuloAC = this.form.controls['Modulo_idModuloAC'];

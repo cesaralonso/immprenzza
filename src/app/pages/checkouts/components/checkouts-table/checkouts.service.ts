@@ -16,6 +16,7 @@ export class CheckoutsService {
 
     private actionUrl: string;
     private headers: Headers;
+    private endPoint: string;
 
 
     constructor(
@@ -57,7 +58,7 @@ export class CheckoutsService {
     }
 
     editCheckouts = (checkouts: CheckoutsInterface): Observable<CheckoutsResponseInterface> =>  {
-        console.log(checkouts.claveauth);
+    
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarCheckout`;
         const toAdd = JSON.stringify(checkouts);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

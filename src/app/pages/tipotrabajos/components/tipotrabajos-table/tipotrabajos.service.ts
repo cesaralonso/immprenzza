@@ -16,6 +16,7 @@ export class TipoTrabajosService {
 
     private actionUrl: string;
     private headers: Headers;
+    private endPoint: string;
 
 
     constructor(
@@ -56,7 +57,7 @@ export class TipoTrabajosService {
     }
 
     editTipoTrabajos = (tipotrabajos: TipoTrabajosInterface): Observable<TipoTrabajosResponseInterface> =>  {
-        console.log(tipotrabajos.claveauth);
+  
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarTipoTrabajo`;
         const toAdd = JSON.stringify(tipotrabajos);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

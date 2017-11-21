@@ -16,7 +16,7 @@ export class OrdenesService {
 
     private actionUrl: string;
     private headers: Headers;
-
+    private endPoint: string;
 
     constructor(
         private _http: Http,
@@ -55,7 +55,7 @@ export class OrdenesService {
     }
 
     editOrdenes = (ordenes: OrdenesInterface): Observable<OrdenesResponseInterface> =>  {
-        console.log(ordenes.claveauth);
+      
         this.actionUrl = `${this._configuration.ServerWithApiUrl}modificarOrden`;
         const toAdd = JSON.stringify(ordenes);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
