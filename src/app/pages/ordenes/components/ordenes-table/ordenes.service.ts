@@ -25,6 +25,7 @@ export class OrdenesService {
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
+        this.endPoint = `${this._configuration.ServerWithApiUrl}orden`;
     }
 
     all = (): Observable<OrdenesResponseInterface> => {
