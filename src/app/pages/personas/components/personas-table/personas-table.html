@@ -7,58 +7,26 @@
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
                         <tr>
-                            <th style="width: 15%"></th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                            <th style="width: 10%"></th>
+                            <th style="width: 15%">
+                                <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccion">Dirección</mfDefaultSorter>
+                            <th style="width: 15%">
+                                <mfDefaultSorter by="sexo">Sexo</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="medidasterreno">Medidas de Terreno</mfDefaultSorter>
+                            <th style="width: 15%">
+                                <mfDefaultSorter by="RFC">Rfc</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="medidasconstruccion">Medidas de Construcción</mfDefaultSorter>
+                            <th style="width: 15%">
+                                <mfDefaultSorter by="domicilio">Domicilio</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="fechainicio">Fecha de Inicio</mfDefaultSorter>
+                            <th style="width: 15%">
+                                <mfDefaultSorter by="telefono">Telefono</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="fechafin">Fecha de Fin</mfDefaultSorter>
+                            <th style="width: 15%">
+                                <mfDefaultSorter by="edad">Edad</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="presupuesto">Presupuesto</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="idrazonsocialcliente">Razón Social Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialcontratista">Razón Social Contratista</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialconstructor">Razón Social Constructor</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialasociado">Razón Social Asociado</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="posiciongps">Posición GPS</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="observaciones">Observaciones</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="desctipopersona">Desc Tipo Persona</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccioncliente">Dirección del Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="claveestatuspersona">Clave Estatus Persona</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="tipopersona">Tipo Persona</mfDefaultSorter>
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -66,26 +34,15 @@
                             <td>
                                 <button (click)="editPersonasModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
                                 <button (click)="onDeleteConfirm($event, item.idpersona)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idpersona, item.descripcion)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="uploadModalShow(item.idpersona, item.nombre)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
                                 <button (click)="filesModalShow(item.idpersona)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.direccion }}</td>
-                            <td>{{ item.medidasterreno }}</td>
-                            <td>{{ item.medidasconstruccion }}</td>
-                            <td>{{ item.fechainicio | date:'dd/MM/y' }}</td>
-                            <td>{{ item.fechafin | date:'dd/MM/y' }}</td>
-                            <td>{{ item.presupuesto }}</td>
-                            <td>{{ item.razonsocialcliente }}</td>
-                            <td>{{ item.razonsocialcontratista }}</td>
-                            <td>{{ item.razonsocialconstructor }}</td>
-                            <td>{{ item.razonsocialasociado }}</td>
-                            <td>{{ item.posiciongps }}</td>
-                            <td>{{ item.observaciones }}</td>
-                            <td>{{ item.desctipopersona }}</td>
-                            <td>{{ item.direccioncliente }}</td>
-                            <td>{{ item.claveestatuspersona }}</td>
-                            <td>{{ item.tipopersona }}</td>
+                            <td>{{ item.nombre }}</td>
+                            <td>{{ item.sexo }}</td>
+                            <td>{{ item.RFC }}</td>
+                            <td>{{ item.domicilio }}</td>
+                            <td>{{ item.telefono}</td>
+                            <td>{{ item.edad }}</td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -104,5 +61,5 @@
             <button (click)="addPersonasModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
-    
+
 </div>

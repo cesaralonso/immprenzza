@@ -9,56 +9,43 @@
                         <tr>
                             <th style="width: 15%"></th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                                <mfDefaultSorter by="archivo">Descripción</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="direccion">Dirección</mfDefaultSorter>
+                                <mfDefaultSorter by="foto">Dirección</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="medidasterreno">Medidas de Terreno</mfDefaultSorter>
+                                <mfDefaultSorter by="f_entregaEsperada">Medidas de Terreno</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="medidasconstruccion">Medidas de Construcción</mfDefaultSorter>
+                                <mfDefaultSorter by="f_entregaReal">Medidas de Construcción</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fechainicio">Fecha de Inicio</mfDefaultSorter>
+                                <mfDefaultSorter by="status">Fecha de Inicio</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fechafin">Fecha de Fin</mfDefaultSorter>
+                                <mfDefaultSorter by="especificaciones">Fecha de Fin</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="presupuesto">Presupuesto</mfDefaultSorter>
+                                <mfDefaultSorter by="Trabajo_idTipoTrabajo">Presupuesto</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="cantidad">Razón Social Contratista</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="idrazonsocialcliente">Razón Social Cliente</mfDefaultSorter>
+                                <mfDefaultSorter by="Personal_idPersonal">Razón Social Constructor</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialcontratista">Razón Social Contratista</mfDefaultSorter>
+                                <mfDefaultSorter by="total">Razón Social Asociado</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialconstructor">Razón Social Constructor</mfDefaultSorter>
+                                <mfDefaultSorter by="Orden_idOrden">Posición GPS</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="razonsocialasociado">Razón Social Asociado</mfDefaultSorter>
+                                <mfDefaultSorter by="f_recibe">Observaciones</mfDefaultSorter>
                             </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="posiciongps">Posición GPS</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="observaciones">Observaciones</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="desctipotrabajo">Desc Tipo Trabajo</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="direccioncliente">Dirección del Cliente</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="claveestatustrabajo">Clave Estatus Trabajo</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="tipotrabajo">Tipo Trabajo</mfDefaultSorter>
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -66,26 +53,21 @@
                             <td>
                                 <button (click)="editTrabajosModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
                                 <button (click)="onDeleteConfirm($event, item.idtrabajo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idtrabajo, item.descripcion)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="uploadModalShow(item.idtrabajo, item.archivo)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
                                 <button (click)="filesModalShow(item.idtrabajo)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.direccion }}</td>
-                            <td>{{ item.medidasterreno }}</td>
-                            <td>{{ item.medidasconstruccion }}</td>
-                            <td>{{ item.fechainicio | date:'dd/MM/y' }}</td>
-                            <td>{{ item.fechafin | date:'dd/MM/y' }}</td>
-                            <td>{{ item.presupuesto }}</td>
-                            <td>{{ item.razonsocialcliente }}</td>
-                            <td>{{ item.razonsocialcontratista }}</td>
-                            <td>{{ item.razonsocialconstructor }}</td>
-                            <td>{{ item.razonsocialasociado }}</td>
-                            <td>{{ item.posiciongps }}</td>
-                            <td>{{ item.observaciones }}</td>
-                            <td>{{ item.desctipotrabajo }}</td>
-                            <td>{{ item.direccioncliente }}</td>
-                            <td>{{ item.claveestatustrabajo }}</td>
-                            <td>{{ item.tipotrabajo }}</td>
+                            <td>{{ item.archivo }}</td>
+                            <td>{{ item.foto }}</td>
+                            <td>{{ item.f_entregaEsperada | date:'dd/MM/y' }}</td>
+                            <td>{{ item.f_entregaReal | date:'dd/MM/y' }}</td>
+                            <td>{{ item.status }}</td>
+                            <td>{{ item.especificaciones }}</td>
+                            <td>{{ item.Trabajo_idTipoTrabajo }}</td>
+                            <td>{{ item.cantidad }}</td>
+                            <td>{{ item.Personal_idPersonal }}</td>
+                            <td>{{ item.total }}</td>
+                            <td>{{ item.Orden_idOrden }}</td>
+                            <td>{{ item.f_recibe | date:'dd/MM/y' }}</td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -104,5 +86,5 @@
             <button (click)="addTrabajosModalShow()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
-    
+
 </div>
