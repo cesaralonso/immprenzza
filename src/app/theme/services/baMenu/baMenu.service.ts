@@ -9,7 +9,6 @@ export class BaMenuService {
   menuItems = new BehaviorSubject<any[]>([]);
 
   protected _currentMenuItem = {};
-  protected _menuFromApi = [];
 
   constructor(private _router:Router) { }
 
@@ -18,8 +17,7 @@ export class BaMenuService {
    *
    * @param {Routes} routes Type compatible with app.menu.ts
    */
-  public updateMenuByRoutes(routes: Routes, menuFromApi: string[]) {
-    this._menuFromApi = menuFromApi;
+  public updateMenuByRoutes(routes: Routes) {
     let convertedRoutes = this.convertRoutesToMenus(_.cloneDeep(routes));
     this.menuItems.next(convertedRoutes);
   }

@@ -29,14 +29,10 @@ import { PAGES_MENU } from './pages.menu';
 })
 export class Pages implements OnInit {
 
-  constructor(private _menuService: BaMenuService,) {
+  constructor(private _menuService: BaMenuService) {
   }
 
   ngOnInit() {
-
-
-    const menuFromApi = ['dashboard', 'obras', 'budgets'];
-
-    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU, menuFromApi);
+    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
   }
 }

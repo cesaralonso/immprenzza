@@ -52,7 +52,8 @@ export const routes: Routes = [
         canActivateChild: [AuthGuard] },
       { path: 'trabajos', loadChildren: './trabajos/trabajos.module#TrabajosModule', 
         canActivateChild: [AuthGuard] },
-      { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivateChild: [AuthGuard] }
+      { path: 'admin', loadChildren: './admin/admin.module#AdminModule', 
+      canActivateChild: [AuthGuard] }
     ]
   }
 ];
