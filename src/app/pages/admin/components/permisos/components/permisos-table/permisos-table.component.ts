@@ -1,5 +1,5 @@
-import { UploadModalComponent } from './../../../../shared/components/upload-modal/upload-modal.component';
-import { FilesUploadModalComponent } from './../../../../shared/components/files-upload-modal/files-upload-modal.component';
+import { UploadModalComponent } from './../../../../../../shared/components/upload-modal/upload-modal.component';
+import { FilesUploadModalComponent } from './../../../../../../shared/components/files-upload-modal/files-upload-modal.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { PermisosInterface } from './permisos.interface';

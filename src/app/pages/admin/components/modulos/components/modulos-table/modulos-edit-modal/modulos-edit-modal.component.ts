@@ -1,7 +1,7 @@
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { AuthLocalstorage } from './../../../../../shared/auth-localstorage.service';
+import { AuthLocalstorage } from './../../../../../../../shared/auth-localstorage.service';
 import { ModulosService } from './../modulos.service';
-import { Modals } from './../../../../ui/components/modals/modals.component';
+import { Modals } from './../../../../../../ui/components/modals/modals.component';
 import { ModulosInterface } from './../modulos.interface';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';

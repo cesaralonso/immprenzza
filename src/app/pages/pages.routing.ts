@@ -48,7 +48,7 @@ export const routes: Routes = [
         canActivateChild: [AuthGuard] },
       { path: 'puestos', loadChildren: './puestos/puestos.module#PuestosModule', 
         canActivateChild: [AuthGuard] },
-      { path: 'tipotrabajos', loadChildren: './tipotrabajos/tipotrabajos.module#TipotrabajosModule', 
+      { path: 'tipotrabajos', loadChildren: './tipotrabajos/tipotrabajos.module#TipoTrabajosModule', 
         canActivateChild: [AuthGuard] },
       { path: 'trabajos', loadChildren: './trabajos/trabajos.module#TrabajosModule', 
         canActivateChild: [AuthGuard] },

@@ -1,3 +1,5 @@
+import { PermisosComponent } from './components/permisos/permisos.component';
+import { ModulosComponent } from './components/modulos/modulos.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { Routes, RouterModule } from '@angular/router';
 
