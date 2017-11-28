@@ -7,8 +7,8 @@
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
                         <tr>
-                            <th style="width: 55%"></th>
-                            <th style="width: 45%">
+                            <th style="width: 50%"></th>
+                            <th style="width: 50%">
                                 <mfDefaultSorter by="nombre">Descripción</mfDefaultSorter>
                             </th>
 
@@ -18,9 +18,9 @@
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editModulosModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idmodulo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idmodulo, item.nombre)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idmodulo)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idModulo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idModulo, item.nombre)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idModulo)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
                             <td>{{ item.nombre }}</td>
 

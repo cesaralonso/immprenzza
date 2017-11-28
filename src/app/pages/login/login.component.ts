@@ -22,9 +22,8 @@ export class LoginComponent {
   items: any;
 
   form: FormGroup;
-  usuarioauth: AbstractControl;
-  claveauth: AbstractControl;
-  nicknameauth: AbstractControl;
+  email: AbstractControl;
+  password: AbstractControl;
   submitted: boolean = false;
 
   constructor(fb: FormBuilder,
@@ -34,13 +33,12 @@ export class LoginComponent {
               private userService: UserService,
               private router: Router) {
     this.form = fb.group({
-      'usuarioauth': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'claveauth': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'nicknameauth': 'ideasys'
+      'email': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
     });
 
-    this.usuarioauth = this.form.controls['usuarioauth'];
-    this.claveauth = this.form.controls['claveauth'];
+    this.email = this.form.controls['email'];
+    this.password = this.form.controls['password'];
   }
 
   onSubmit(values: LoginInterface): void {

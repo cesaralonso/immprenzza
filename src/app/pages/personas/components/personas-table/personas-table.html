@@ -4,6 +4,7 @@
             <div class="panel panel-default">
                 <!-- <div class="panel-heading">Información de Personas</div> -->
 
+
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
                         <tr>
@@ -12,37 +13,37 @@
                                 <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
+                                <mfDefaultSorter by="edad">Edad</mfDefaultSorter>
+                            </th>
+                            <th style="width: 15%">
                                 <mfDefaultSorter by="sexo">Sexo</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
-                                <mfDefaultSorter by="RFC">Rfc</mfDefaultSorter>
-                            </th>
-                            <th style="width: 15%">
-                                <mfDefaultSorter by="domicilio">Domicilio</mfDefaultSorter>
+                                <mfDefaultSorter by="RFC">RFC</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
                                 <mfDefaultSorter by="telefono">Telefono</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
-                                <mfDefaultSorter by="edad">Edad</mfDefaultSorter>
+                                <mfDefaultSorter by="domicilio">Domicilio</mfDefaultSorter>
                             </th>
 
-                        </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editPersonasModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idpersona)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idpersona, item.nombre)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idpersona)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idPersona)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idPersona, item.nombre)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idPersona)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
                             <td>{{ item.nombre }}</td>
+                            <td>{{ item.edad }}</td>
                             <td>{{ item.sexo }}</td>
                             <td>{{ item.RFC }}</td>
+                            <td>{{ item.telefono }}</td>
                             <td>{{ item.domicilio }}</td>
-                            <td>{{ item.telefono}</td>
-                            <td>{{ item.edad }}</td>
+
                         </tr>
                     </tbody>
                     <tfoot>

@@ -27,13 +27,12 @@
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editCheckoutsModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idcheckout)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idcheckout, item.entrada)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idcheckout)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idCheckout)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idCheckout, item.entrada)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idCheckout)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-
-                            <td>{{ item.entrada }}</td>
-                            <td>{{ item.salida }}</td>
+                            <td>{{ item.entrada | date:'dd/MM/y'}}</td>
+                            <td>{{ item.salida | date:'dd/MM/y'}}</td>
                             <td>{{ item.tiempo_trabajado }}</td>
                             <td>{{ item.Personal_idPersonal }}</td>
 

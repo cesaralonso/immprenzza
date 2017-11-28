@@ -12,29 +12,29 @@
                                 <mfDefaultSorter by="factura">Factura</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
+                                <mfDefaultSorter by="fecha">Fecha</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
                                 <mfDefaultSorter by="status_avance">Status Avance</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
                                 <mfDefaultSorter by="status_pago">Status Pago</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="f_limite">Fecha Limite</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="fecha">Fecha</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="subtotal">Subtotal</mfDefaultSorter>
+                                <mfDefaultSorter by="subtotal">SubTotal</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
                                 <mfDefaultSorter by="total">Total</mfDefaultSorter>
                             </th>
-
                             <th style="width: 5%">
                                 <mfDefaultSorter by="iva">Iva</mfDefaultSorter>
                             </th>
+
                             <th style="width: 5%">
                                 <mfDefaultSorter by="deuda">Deuda</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="f_limite">Fecha Limite</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
                                 <mfDefaultSorter by="Cliente_idCliente">Cliente</mfDefaultSorter>
@@ -46,19 +46,19 @@
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editOrdenesModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idorden)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idorden, item.factura)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idorden)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idOrden)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idOrden, item.factura)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idOrden)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
                             <td>{{ item.factura }}</td>
+                            <td>{{ item.fecha | date:'dd/MM/y'  }}</td>
                             <td>{{ item.status_avance }}</td>
                             <td>{{ item.status_pago }}</td>
-                            <td>{{ item.f_limite | date:'dd/MM/y' }}</td>
-                            <td>{{ item.fecha | date:'dd/MM/y' }}</td>
                             <td>{{ item.subtotal }}</td>
                             <td>{{ item.total }}</td>
                             <td>{{ item.iva }}</td>
                             <td>{{ item.deuda }}</td>
+                            <td>{{ item.f_limite | date:'dd/MM/y'  }}</td>
                             <td>{{ item.Cliente_idCliente }}</td>
 
                         </tr>

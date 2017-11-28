@@ -12,10 +12,10 @@
                                 <mfDefaultSorter by="f_ingreso">Fecha de Ingreso</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
-                                <mfDefaultSorter by="frec_nomina">Frecuencia de Nomina</mfDefaultSorter>
+                                <mfDefaultSorter by="nomina">Nomina</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
-                                <mfDefaultSorter by="nomina">Nomina</mfDefaultSorter>
+                                <mfDefaultSorter by="frec_nomina">Frecuencia de nomina</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
                                 <mfDefaultSorter by="Persona_idPersona">Persona</mfDefaultSorter>
@@ -30,15 +30,15 @@
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editEmpleadosModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idpersonal)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                <button (click)="uploadModalShow(item.idpersonal, item.f_ingreso)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
-                                <button (click)="filesModalShow(item.idpersonal)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idPersonal)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="uploadModalShow(item.idPersonal, item.f_ingreso)" class="btn btn-sm btn-success"><i class="fa fa-file"></i></button>
+                                <button (click)="filesModalShow(item.idPersonal)" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></button>
                             </td>
-                            <td>{{ item.f_ingreso  | date:'dd/MM/y' }}</td>
-                            <td>{{ item.frec_nomina }}</td>
+                            <td>{{ item.f_ingreso | date:'dd/MM/y' }}</td>
                             <td>{{ item.nomina }}</td>
+                            <td>{{ item.frec_nomina }}</td>
                             <td>{{ item.Persona_idPersona }}</td>
-                            <td>{{ item.Puesto_idPuesto}}</td>
+                            <td>{{ item.Puesto_idPuesto }}</td>
 
                         </tr>
                     </tbody>
