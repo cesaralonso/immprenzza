@@ -23,11 +23,6 @@ export class AuthLocalstorage {
   setCredentials(credentials: LoginInterface, loginResponseInterface: LoginResponseInterface): void {
       this.localStorageService.clearAll();
       this.localStorageService.set('isLoggedIn', true);
-      this.localStorageService.set('claveauth', credentials.claveauth);
-      this.localStorageService.set('usuarioauth', credentials.usuarioauth);
-      this.localStorageService.set('nicknameauth', credentials.nicknameauth);
-      this.localStorageService.set('idusuario', this.toInt(loginResponseInterface.valorRespuesta.split('|')[1]));
-      this.localStorageService.set('idlicencia', this.toInt(loginResponseInterface.valorRespuesta.split('|')[0]));
   }
 
   getCredentials(): CredentialsInterface {

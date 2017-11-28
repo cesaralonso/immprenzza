@@ -71,9 +71,9 @@ export class LoginComponent {
   }
 
   private showModal(response: LoginResponseInterface, credentials: LoginInterface) {
-    if (response.idRespuesta === 0) {
+    if (response.success) {
 
-      this.toastrService.success(response.mensajeRespuesta);
+      // this.toastrService.success(response.result);
       this.authLocalstorage.setCredentials(credentials, response);
 
       // Cargar datos de usuario logeado para guardar en Localstorage su imagen de perfil
@@ -81,7 +81,7 @@ export class LoginComponent {
 
       this.router.navigate(['pages/dashboard']);
     } else {
-      this.toastrService.error(response.mensajeRespuesta);
+      // this.toastrService.error(response.result);
       this.authLocalstorage.clearAll();
     }
   }

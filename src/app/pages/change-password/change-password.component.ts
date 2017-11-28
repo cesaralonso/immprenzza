@@ -50,15 +50,9 @@ export class ChangePasswordComponent {
     private localStorageService: LocalStorageService,
     ) {
 
-    this._claveauth = this.localStorageService.get('claveauth').toString();
-    this._usuarioauth = this.localStorageService.get('usuarioauth').toString();
-    this._nicknameauth = this.localStorageService.get('nicknameauth').toString();
     this._idusuario = this.localStorageService.get('idusuario').toString();
 
     this.form = fb.group({
-      'nicknameauth': this._nicknameauth,
-      'usuarioauth': this._usuarioauth,
-      'claveauth': this._claveauth,
       'idusuario': this._idusuario,
       'contrasena': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'contrasenas': fb.group({
@@ -74,16 +68,15 @@ export class ChangePasswordComponent {
 
   }
 
-  onSubmit(values: ChangePasswordInterface): void {
+  onSubmit(values: LoginInterface): void {
     this.submitted = true;
     if (this.form.valid) {
 
       // Valida usuario contra contraseña anterior del usuario
       const credentials: LoginInterface = {
-        nicknameauth: values.nicknameauth,
-        claveauth: values.contrasena,
-        usuarioauth: values.usuarioauth,
-      }
+        email: values.email,
+        password: values.password,
+      };
 
       this.authService
         .login(credentials)
@@ -92,16 +85,13 @@ export class ChangePasswordComponent {
     }
   }
 
-  private changePassword(response: LoginResponseInterface, valuesChangePasswordForm: ChangePasswordInterface) {
-    if (response.idRespuesta === 0) {
+  private changePassword(response: LoginResponseInterface, valuesChangePasswordForm: any) {
+    if (response.success) {
       // Si fue validado el usuario con la contraseña anterior procede con el cambio de contrasena
       const newPassword = {
-        nicknameauth: valuesChangePasswordForm.nicknameauth,
-        claveauth: valuesChangePasswordForm.claveauth,
-        usuarioauth: valuesChangePasswordForm.usuarioauth,
         idusuario: valuesChangePasswordForm.idusuario,
         contrasena: valuesChangePasswordForm.contrasenas.nuevacontrasena,
-      }
+      };
 
       this.service
         .ChangePassword(newPassword)
@@ -109,7 +99,7 @@ export class ChangePasswordComponent {
             (data: ChangePasswordResponseInterface) => this.showToast(data));
 
     } else {
-      this.toastrService.error(response.mensajeRespuesta);
+      // this.toastrService.error(response.result);
     }
   }
 
