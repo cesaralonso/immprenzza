@@ -39,10 +39,6 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
     telefonoAC: AbstractControl;
     idstatususuarioAC: AbstractControl;
 
-    private _claveauth: string;
-    private _usuarioauth: string;
-    private _nicknameauth: string;
-
     constructor( 
         dialogService: DialogService,
         fb: FormBuilder,
@@ -71,10 +67,6 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
         this.telefonoAC = this.form.controls['telefonoAC'];
         this.idstatususuarioAC = this.form.controls['idstatususuarioAC'];
 
-        const credenciales = this.authLocalstorage.getCredentials();
-        this._claveauth = credenciales.claveauth;
-        this._usuarioauth = credenciales.usuarioauth;
-        this._nicknameauth = credenciales.nicknameauth;
         this._estatususuarios = [];
      }
 
@@ -109,9 +101,6 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
       if (this.form.valid) {
         this.userService
           .editUser({
-                claveauth: this._claveauth,
-                nicknameauth: this._nicknameauth,
-                usuarioauth: this._usuarioauth,
                 idusuario: this.idusuario,
                 idrol: this.idrol,
                 usuario: this.usuario,

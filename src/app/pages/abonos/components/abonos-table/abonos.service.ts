@@ -25,7 +25,7 @@ export class AbonosService {
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
-        this.endPoint = '${this._configuration.ServerWithApiUrl}abono';
+        this.endPoint = `${this._configuration.ServerWithApiUrl}abono`;
     }
 
       all = (): Observable<AbonosResponseInterface> => {
@@ -67,9 +67,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerAbonosPorIDAbono`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idabono: idAbono,
         });
 
@@ -93,9 +90,6 @@ export class AbonosService {
 
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idusuario': id,
         });
 
@@ -108,9 +102,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}autorizarAbono`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idabono: idAbono,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -122,9 +113,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bloquearAbono`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idabono: idAbono,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -136,9 +124,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cancelarAbono`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idabono: idAbono,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -150,9 +135,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}FinalizarAbono`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idabono: idAbono,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -164,9 +146,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cambiarEstatusPorIDAbono`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idabono: idAbono,
             idestatusabono: idEstatusAbono,
         });
@@ -179,9 +158,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerAbonosPorIDRazonSocialCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcliente: idRazonSocialCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -193,9 +169,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerAbonosPorIDRazonSocialContratista`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcontratista: idRazonSocialContratista,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -207,9 +180,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerAbonosPorIDRazonSocialConstructor`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialconstructor: idRazonSocialConstructor,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -221,9 +191,6 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerAbonosPorIDRazonSocialAsociado`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialasociado: idRazonSocialAsociado,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -268,11 +235,8 @@ export class AbonosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idreferencia': idreferencia,
-            'proceso': proceso
+            'proceso': proceso,
         });
 
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

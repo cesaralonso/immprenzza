@@ -47,9 +47,6 @@ export class UserService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerUsuario`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idusuario: id,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -69,7 +66,7 @@ export class UserService {
     obtenerEstatusUsuarios = (): Observable<any[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerStatusUsuarios`;
         const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <any[]>response.json())
             .catch(this.handleError);
     }
@@ -77,38 +74,22 @@ export class UserService {
     obtenerRoles = (): Observable<any[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerRoles`;
         const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <any[]>response.json())
             .catch(this.handleError);
     }
 
     getUserAvatar = (id: any): Observable<UserResponseInterface> =>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia`;
+        this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia/${id}`;
         const credenciales = this.authLocalstorage.getCredentials();
-        const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
-            proceso: 'Usuario',
-            idreferencia: id,
-        });
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <UserResponseInterface>response.json())
             .catch(this.handleError);
     }
 
     deleteUser = (id: string): Observable<UserResponseInterface[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaUsuario`;
-       
-        const credenciales = this.authLocalstorage.getCredentials();
-        const toSend = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
-            'idusuario': id,
-        });
-
-        return this._http.post(this.actionUrl, toSend, { headers: this.headers })
+        this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaUsuario/${id}`;
+        return this._http.delete(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <any[]>response.json())
             .catch(this.handleError);
     }

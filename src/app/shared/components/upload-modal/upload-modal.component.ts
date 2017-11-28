@@ -9,9 +9,6 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { NgUploaderOptions } from 'ngx-uploader';
 
 export interface ArchivoInterface {
-  nicknameauth: string;
-  usuarioauth: string;
-  claveauth: string;
   idreferencia: number;
   proceso: string;
   tipoarchivo: string;
@@ -47,9 +44,6 @@ export class UploadModalComponent implements OnInit {
       const response = JSON.parse(event.response);
       if (response.status === 'success') {
         const archivo: ArchivoInterface = {
-            nicknameauth: this.credentials.nicknameauth,
-            usuarioauth: this.credentials.usuarioauth,
-            claveauth: this.credentials.claveauth,
             idreferencia: this.id,
             proceso: this.referencia,
             tipoarchivo: response.type,

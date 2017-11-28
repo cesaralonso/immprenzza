@@ -83,10 +83,6 @@ export class ObrasEditModalComponent extends DialogComponent<ObrasInterface, any
   idestatusobraAC: AbstractControl;
   observacionesAC: AbstractControl;
 
-  private _claveauth: string;
-  private _usuarioauth: string;
-  private _nicknameauth: string;
-
 
 
   constructor(
@@ -104,16 +100,7 @@ export class ObrasEditModalComponent extends DialogComponent<ObrasInterface, any
     this._razonsocialcliente = [];
     this._tipoobra = [];
 
-    const credenciales = this.authLocalstorage.getCredentials();
-    
-        this._claveauth = credenciales.claveauth;
-        this._usuarioauth = credenciales.usuarioauth;
-        this._nicknameauth = credenciales.nicknameauth;
-
     this.form = fb.group({
-      'claveauthAC': this._claveauth,
-      'nicknameauthAC': this._nicknameauth,
-      'usuarioauthAC': this._usuarioauth,
       'idobraAC' : this.id,
       'descripcionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'direccionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -202,9 +189,6 @@ export class ObrasEditModalComponent extends DialogComponent<ObrasInterface, any
     if (this.form.valid) {
       this.service
         .editObras({
-          claveauth: this._claveauth,
-          nicknameauth: this._nicknameauth,
-          usuarioauth: this._usuarioauth,
           idobra: this.idobra,
           descripcion: this.descripcion,
           direccion: this.direccion,

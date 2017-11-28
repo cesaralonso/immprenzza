@@ -68,9 +68,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPuestosPorIDPuesto`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idpuesto: idPuesto,
         });
 
@@ -94,9 +91,6 @@ export class PuestosService {
 
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idusuario': id,
         });
 
@@ -109,9 +103,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}autorizarPuesto`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idpuesto: idPuesto,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -123,9 +114,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bloquearPuesto`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idpuesto: idPuesto,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -137,9 +125,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cancelarPuesto`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idpuesto: idPuesto,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -151,9 +136,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}FinalizarPuesto`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idpuesto: idPuesto,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -165,9 +147,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cambiarEstatusPorIDPuesto`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idpuesto: idPuesto,
             idestatuspuesto: idEstatusPuesto,
         });
@@ -180,9 +159,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPuestosPorIDRazonSocialCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcliente: idRazonSocialCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -194,9 +170,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPuestosPorIDRazonSocialContratista`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcontratista: idRazonSocialContratista,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -208,9 +181,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPuestosPorIDRazonSocialConstructor`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialconstructor: idRazonSocialConstructor,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -222,9 +192,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPuestosPorIDRazonSocialAsociado`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialasociado: idRazonSocialAsociado,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -269,9 +236,6 @@ export class PuestosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idreferencia': idreferencia,
             'proceso': proceso
         });

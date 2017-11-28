@@ -31,19 +31,10 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
   form: FormGroup;
   submitted: boolean = false;
 
-  nicknameauthAC: AbstractControl;
-  usuarioauthAC: AbstractControl;
-  claveauthAC: AbstractControl;
   idrolAC: AbstractControl;
   rolAC: AbstractControl;
   descripcionAC: AbstractControl;
   visibleAC: AbstractControl;
-
-  private _claveauth: string;
-  private _usuarioauth: string;
-  private _nicknameauth: string;
-  private _idusuario: string;
-
 
   constructor(
     private service: GroupsService,
@@ -51,7 +42,7 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
     private toastrService: ToastrService,
     private localStorageService: LocalStorageService,
     private authLocalstorage: AuthLocalstorage,
-    dialogService: DialogService
+    dialogService: DialogService,
   ) {
     super(dialogService);
     
@@ -62,14 +53,7 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
         
     const credenciales = this.authLocalstorage.getCredentials();
 
-    this._claveauth = credenciales.claveauth;
-    this._usuarioauth = credenciales.usuarioauth;
-    this._nicknameauth = credenciales.nicknameauth;
-
     this.form = fb.group({
-      'claveauthAC': this._claveauth,
-      'nicknameauthAC': this._nicknameauth,
-      'usuarioauthAC': this._usuarioauth,
       'idrolAC': this.id,
       'rolAC': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'descripcionAC': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -96,13 +80,10 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
     if (this.form.valid) {
       this.service
         .editGroups({
-          claveauth: this._claveauth,
-          nicknameauth: this._nicknameauth,
-          usuarioauth: this._usuarioauth,
           idrol: this.idrol,
           rol: this.rol,
           descripcion: this.descripcion,
-          visible: this.visible
+          visible: this.visible,
         })
         .subscribe(
             (data: any) => {
@@ -113,11 +94,11 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
   }
 
   private showToast(data: any, values: GroupsInterface) {
-    if (data.idRespuesta === 0) {
+    if (data.success) {
 
-      this.toastrService.success(data.mensajeRespuesta);
+      // this.toastrService.success(data.result);
     } else {
-      this.toastrService.error(data.mensajeRespuesta);
+      // this.toastrService.error(data.result);
     }
   }
 

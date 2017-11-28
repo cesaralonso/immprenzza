@@ -22,9 +22,6 @@ import { ChangePasswordInterface } from './change-password.interface';
 export class ChangePasswordComponent {
 
   form: FormGroup;
-  nicknameauth: AbstractControl;
-  usuarioauth: AbstractControl;
-  claveauth: AbstractControl;
   idusuario: AbstractControl;
   nuevacontrasena: AbstractControl;
   anteriorcontrasena: AbstractControl;
@@ -34,9 +31,6 @@ export class ChangePasswordComponent {
   contrasena: AbstractControl;
   contrasenas: FormGroup;
 
-  private _claveauth: string;
-  private _usuarioauth: string;
-  private _nicknameauth: string;
   private _idusuario: string;
   
 

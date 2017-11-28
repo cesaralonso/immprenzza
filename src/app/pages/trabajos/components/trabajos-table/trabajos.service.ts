@@ -67,9 +67,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerTrabajosPorIDTrabajo`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idtrabajo: idTrabajo,
         });
 
@@ -93,9 +90,6 @@ export class TrabajosService {
 
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idusuario': id,
         });
 
@@ -108,9 +102,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}autorizarTrabajo`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idtrabajo: idTrabajo,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -122,9 +113,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bloquearTrabajo`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idtrabajo: idTrabajo,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -136,9 +124,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cancelarTrabajo`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idtrabajo: idTrabajo,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -150,9 +135,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}FinalizarTrabajo`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idtrabajo: idTrabajo,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -164,9 +146,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cambiarEstatusPorIDTrabajo`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idtrabajo: idTrabajo,
             idestatustrabajo: idEstatusTrabajo,
         });
@@ -179,9 +158,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerTrabajosPorIDRazonSocialCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcliente: idRazonSocialCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -193,9 +169,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerTrabajosPorIDRazonSocialContratista`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcontratista: idRazonSocialContratista,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -207,9 +180,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerTrabajosPorIDRazonSocialConstructor`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialconstructor: idRazonSocialConstructor,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -221,9 +191,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerTrabajosPorIDRazonSocialAsociado`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialasociado: idRazonSocialAsociado,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -268,9 +235,6 @@ export class TrabajosService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idreferencia': idreferencia,
             'proceso': proceso
         });

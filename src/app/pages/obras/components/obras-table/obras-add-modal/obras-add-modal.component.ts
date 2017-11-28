@@ -44,9 +44,6 @@ export class ObrasAddModalComponent extends DialogComponent<ObrasInterface, any>
   idestatusobra: AbstractControl;
   observaciones: AbstractControl;
 
-  private _claveauth: string;
-  private _usuarioauth: string;
-  private _nicknameauth: string;
 
 
   constructor(
@@ -65,17 +62,7 @@ export class ObrasAddModalComponent extends DialogComponent<ObrasInterface, any>
     this._razonsocialcliente = [];
     this._tipoobra = [];
 
-    const credenciales = this.authLocalstorage.getCredentials();
-    
-        this._claveauth = credenciales.claveauth;
-        this._usuarioauth = credenciales.usuarioauth;
-        this._nicknameauth = credenciales.nicknameauth;
-    
-
     this.form = fb.group({
-      'claveauth': this._claveauth,
-      'nicknameauth': this._nicknameauth,
-      'usuarioauth': this._usuarioauth,
       'descripcion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'direccion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'medidasterreno' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],

@@ -47,9 +47,6 @@ export class GroupsService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerRol`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrol: id,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -71,9 +68,6 @@ export class GroupsService {
        
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idrol': id,
         });
 

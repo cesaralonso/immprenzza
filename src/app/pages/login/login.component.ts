@@ -41,6 +41,7 @@ export class LoginComponent {
     this.password = this.form.controls['password'];
   }
 
+
   onSubmit(values: LoginInterface): void {
     this.submitted = true;
     if (this.form.valid) {
@@ -51,37 +52,13 @@ export class LoginComponent {
     }
   }
 
-  toInt(tochange: any): number {
-      return +tochange;
-  }
-
-  private setAvatarInLocalStorage(response) {
-      const userId = this.toInt(response.valorRespuesta.split('|')[1]);
-
-      this.userService
-        .getUserAvatar(userId)
-        .subscribe(
-          (data: any) => {
-            if (data.length) {
-              this.authLocalstorage.setAvatar(data[1].urlarchivo);
-            } else {
-              this.authLocalstorage.setAvatar('');
-            }
-          });
-  }
-
   private showModal(response: LoginResponseInterface, credentials: LoginInterface) {
     if (response.success) {
-
-      // this.toastrService.success(response.result);
+      this.toastrService.success(response.message);
       this.authLocalstorage.setCredentials(credentials, response);
-
-      // Cargar datos de usuario logeado para guardar en Localstorage su imagen de perfil
-      this.setAvatarInLocalStorage(response);
-
       this.router.navigate(['pages/dashboard']);
     } else {
-      // this.toastrService.error(response.result);
+      this.toastrService.error(response.message);
       this.authLocalstorage.clearAll();
     }
   }

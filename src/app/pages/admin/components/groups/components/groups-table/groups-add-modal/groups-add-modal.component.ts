@@ -22,17 +22,9 @@ export class GroupsAddModalComponent extends DialogComponent<GroupsInterface, an
   form: FormGroup;
   submitted: boolean = false;
 
-  nicknameauth: AbstractControl;
-  usuarioauth: AbstractControl;
-  claveauth: AbstractControl;
   rol: AbstractControl;
   descripcion: AbstractControl;
   visible: AbstractControl;
-
-
-  private _claveauth: string;
-  private _usuarioauth: string;
-  private _nicknameauth: string;
 
   constructor(
     private service: GroupsService,
@@ -40,20 +32,13 @@ export class GroupsAddModalComponent extends DialogComponent<GroupsInterface, an
     private toastrService: ToastrService,
     private localStorageService: LocalStorageService,
     private authLocalstorage: AuthLocalstorage,
-    dialogService: DialogService
+    dialogService: DialogService,
   ) {
     super(dialogService);
 
     const credenciales = this.authLocalstorage.getCredentials();
 
-    this._claveauth = credenciales.claveauth;
-    this._usuarioauth = credenciales.usuarioauth;
-    this._nicknameauth = credenciales.nicknameauth;
-
     this.form = fb.group({
-      'claveauth': this._claveauth,
-      'nicknameauth': this._nicknameauth,
-      'usuarioauth': this._usuarioauth,
       'rol': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'descripcion': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'visible': [''],

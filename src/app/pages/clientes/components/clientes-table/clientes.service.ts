@@ -68,9 +68,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerClientesPorIDCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idcliente: idCliente,
         });
 
@@ -94,9 +91,6 @@ export class ClientesService {
 
         const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idusuario': id,
         });
 
@@ -109,9 +103,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}autorizarCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idcliente: idCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -123,9 +114,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bloquearCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idcliente: idCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -137,9 +125,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cancelarCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idcliente: idCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -151,9 +136,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}FinalizarCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idcliente: idCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -165,9 +147,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cambiarEstatusPorIDCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idcliente: idCliente,
             idestatuscliente: idEstatusCliente,
         });
@@ -180,9 +159,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerClientesPorIDRazonSocialCliente`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcliente: idRazonSocialCliente,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -194,9 +170,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerClientesPorIDRazonSocialContratista`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialcontratista: idRazonSocialContratista,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -208,9 +181,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerClientesPorIDRazonSocialConstructor`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialconstructor: idRazonSocialConstructor,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -222,9 +192,6 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerClientesPorIDRazonSocialAsociado`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            nicknameauth: credenciales.nicknameauth,
-            usuarioauth: credenciales.usuarioauth,
-            claveauth: credenciales.claveauth,
             idrazonsocialasociado: idRazonSocialAsociado,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
@@ -269,11 +236,8 @@ export class ClientesService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            'nicknameauth': credenciales.nicknameauth,
-            'usuarioauth': credenciales.usuarioauth,
-            'claveauth': credenciales.claveauth,
             'idreferencia': idreferencia,
-            'proceso': proceso
+            'proceso': proceso,
         });
 
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })

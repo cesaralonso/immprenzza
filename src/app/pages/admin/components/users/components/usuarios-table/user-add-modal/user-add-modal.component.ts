@@ -33,10 +33,6 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
   idstatususuario: AbstractControl;
 
   data: any;
-  
-  private _claveauth: string;
-  private _usuarioauth: string;
-  private _nicknameauth: string;
 
   constructor(private service: UserService,
               fb: FormBuilder,
@@ -65,11 +61,6 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
     this.email = this.form.controls['email'];
     this.telefono = this.form.controls['telefono'];
     this.idstatususuario = this.form.controls['idstatususuario'];
-
-    const credenciales = this.authLocalstorage.getCredentials();
-    this._claveauth = credenciales.claveauth;
-    this._usuarioauth = credenciales.usuarioauth;
-    this._nicknameauth = credenciales.nicknameauth;
   }
 
   ngOnInit() {
@@ -104,9 +95,6 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
     if (this.form.valid) {
       this.service
         .addUser({
-                claveauth: this._claveauth,
-                nicknameauth: this._nicknameauth,
-                usuarioauth: this._usuarioauth,
                 idrol: values.idrol,
                 usuario: values.usuario,
                 contrasena: values.contrasena,

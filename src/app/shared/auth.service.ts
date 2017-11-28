@@ -50,7 +50,7 @@ export class AuthService {
     }
 
     login(values: LoginInterface): Observable<any> {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}users/login`;
+        this.actionUrl = `${this._configuration.ServerWithApiUrl}user/login`;
         const toAdd = JSON.stringify(values);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <any>response.json())

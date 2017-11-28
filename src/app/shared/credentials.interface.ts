@@ -1,5 +1,4 @@
 export interface CredentialsInterface {
-  claveauth: string;
-  usuarioauth: string;
-  nicknameauth: string;
+  email: string;
+  idUser: string;
 }
