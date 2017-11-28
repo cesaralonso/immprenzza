@@ -38,7 +38,7 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
     routing,
     DataTableModule,
     NgbModalModule,
-    BootstrapModalModule.forRoot({ container: document.body })    
+    BootstrapModalModule.forRoot({ container: document.body })
   ],
   declarations: [
     Users,
