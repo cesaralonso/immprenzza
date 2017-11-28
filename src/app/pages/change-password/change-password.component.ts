@@ -104,11 +104,11 @@ export class ChangePasswordComponent {
   }
 
   private showToast(data: ChangePasswordResponseInterface) {
-    if (data.idRespuesta === 0) {
-      this.toastrService.success(data.mensajeRespuesta);
+    if (data.success) {
+      // this.toastrService.success(data.result);
       this.router.navigate(['login']);
     } else {
-      this.toastrService.error(data.mensajeRespuesta);
+      // this.toastrService.error(data.result);
     }
   }
 

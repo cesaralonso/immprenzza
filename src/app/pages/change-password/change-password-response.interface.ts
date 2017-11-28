@@ -1,5 +1,4 @@
 export interface ChangePasswordResponseInterface {
-    idRespuesta: number;
-    mensajeRespuesta: string;
-    valorRespuesta: string;
+    success: string;
+    result: string[];
 }
