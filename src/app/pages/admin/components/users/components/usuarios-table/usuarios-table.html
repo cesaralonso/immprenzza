@@ -49,25 +49,12 @@
                                 <mfDefaultSorter by="usuario">Usuario</mfDefaultSorter>
                             </th>
                             <th style="width: 10%">
-                                <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
-                            </th>
-                            <th style="width: 10%">
                                 <mfDefaultSorter by="email">Email</mfDefaultSorter>
                             </th>
-                            <th style="width: 10%">
-                                <mfDefaultSorter by="telefono">Teléfono</mfDefaultSorter>
-                            </th>
-                            <th style="width: 10%">
-                                <mfDefaultSorter by="statususuario">statususuario</mfDefaultSorter>
-                            </th>
-                            <th style="width: 10%">
-                                <mfDefaultSorter by="emailsms">Email sms</mfDefaultSorter>
+                                <mfDefaultSorter by="Rol_idRol">Rol</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="rol">Rol</mfDefaultSorter>
-                            </th>
-                            <th style="width: 5%">
-                                <mfDefaultSorter by="rol">Descripción</mfDefaultSorter>
+                                <mfDefaultSorter by="password">Password</mfDefaultSorter>
                             </th>
                         </tr>
                     </thead>
@@ -75,16 +62,12 @@
                         <tr *ngFor="let item of mf.data">
                             <td>
                                 <button (click)="editUserModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idusuario)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idUser)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                             </td>
                             <td>{{item.usuario}}</td>
                             <td>{{item.nombre}}</td>
                             <td>{{item.email}}</td>
-                            <td>{{item.telefono}}</td>
-                            <td>{{item.statususuario}}</td>
-                            <td>{{item.emailsms}}</td>
-                            <td>{{item.rol}}</td>
-                            <td>{{item.descripcion}}</td>
+                            <td>{{item.Rol_idRol}}</td>
                         </tr>
                     </tbody>
                     <tfoot>

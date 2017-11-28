@@ -47,7 +47,7 @@ export class UserService {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerUsuario`;
         const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
-            idusuario: id,
+            idUser: id,
         });
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <UserResponseInterface[]>response.json())

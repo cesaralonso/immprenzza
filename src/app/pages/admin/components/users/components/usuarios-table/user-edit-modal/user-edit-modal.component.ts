@@ -15,31 +15,24 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
 
     _roles: string[];
 
-    idusuario?: 0;
-    idrol: 0;
+    idUser?: 0;
+    Rol_idRol: 0;
     usuario: '';
-    contrasena: '';
-    nombre: '';
+    password: '';
     email: '';
-    telefono: '';
-    idstatususuario: 0;
-    emailsms: '';
-    
+
     data: any;
-    
+
     _estatususuarios: string[];
 
     form: FormGroup;
     submitted: boolean = false;
-    idrolAC: AbstractControl;
+    Rol_idRolAC: AbstractControl;
     usuarioAC: AbstractControl;
-    contrasenaAC: AbstractControl;
-    nombreAC: AbstractControl;
+    passwordAC: AbstractControl;
     emailAC: AbstractControl;
-    telefonoAC: AbstractControl;
-    idstatususuarioAC: AbstractControl;
 
-    constructor( 
+    constructor(
         dialogService: DialogService,
         fb: FormBuilder,
         private userService: UserService,
@@ -47,25 +40,19 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
         private authLocalstorage: AuthLocalstorage,
     ) {
         super(dialogService);
-        this.form = fb.group({     
-          'idrolAC': [''],
+        this.form = fb.group({
+          'Rol_idRolAC': [''],
           'usuarioAC': [''],
-          'contrasenaAC': [''],
-          'nombreAC': [''],
+          'passwordAC': [''],
           'emailAC': [''],
-          'telefonoAC': [''],
-          'idstatususuarioAC': [''],
         });
 
         this._roles = [];
 
-        this.idrolAC = this.form.controls['idrolAC'];
+        this.Rol_idRolAC = this.form.controls['Rol_idRolAC'];
         this.usuarioAC = this.form.controls['usuarioAC'];
-        this.contrasenaAC = this.form.controls['contrasenaAC'];
-        this.nombreAC = this.form.controls['nombreAC'];
+        this.passwordAC = this.form.controls['passwordAC'];
         this.emailAC = this.form.controls['emailAC'];
-        this.telefonoAC = this.form.controls['telefonoAC'];
-        this.idstatususuarioAC = this.form.controls['idstatususuarioAC'];
 
         this._estatususuarios = [];
      }
@@ -101,23 +88,19 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
       if (this.form.valid) {
         this.userService
           .editUser({
-                idusuario: this.idusuario,
-                idrol: this.idrol,
+                idUser: this.idUser,
+                Rol_idRol: this.Rol_idRol,
                 usuario: this.usuario,
-                contrasena: this.contrasena,
-                nombre: this.nombre,
+                password: this.password,
                 email: this.email,
-                telefono: this.telefono,
-                idstatususuario: this.idstatususuario,
-                emailsms: '',
             })
           .subscribe((data: any) => {
             this.data = data;
             this.confirm();
           });
       }
-    }  
-    
+    }
+
     private showToast(data: any) {
       if (data.idRespuesta === 0) {
         this.toastrService.success(data.mensajeRespuesta);

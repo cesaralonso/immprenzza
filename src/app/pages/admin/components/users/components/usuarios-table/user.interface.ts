@@ -1,11 +1,7 @@
 export interface UserInterface {
-    idusuario?: number;
-    idrol: number;
+    idUser?: number;
+    Rol_idRol: number;
     usuario: string;
-    contrasena: string;
-    nombre: string;
+    password: string;
     email: string;
-    telefono: string;
-    idstatususuario: number;
-    emailsms: string;
 }

@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class UserAddModalComponent extends DialogComponent<UserInterface, any> implements OnInit {
-  
+
   _roles: string[];
   _estatususuarios: string[];
   modalHeader: string;
@@ -24,13 +24,10 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
   form: FormGroup;
   submitted: boolean = false;
 
-  idrol: AbstractControl;
+  Rol_idRol: AbstractControl;
   usuario: AbstractControl;
-  contrasena: AbstractControl;
-  nombre: AbstractControl;
+  password: AbstractControl;
   email: AbstractControl;
-  telefono: AbstractControl;
-  idstatususuario: AbstractControl;
 
   data: any;
 
@@ -45,29 +42,23 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
     this._roles = [];
 
     this.form = fb.group({
-      'idrol': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'Rol_idRol': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'usuario': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'contrasena': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'nombre': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'email': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'telefono': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'idstatususuario': [''],
     });
 
-    this.idrol = this.form.controls['idrol'];
+    this.Rol_idRol = this.form.controls['Rol_idRol'];
     this.usuario = this.form.controls['usuario'];
-    this.contrasena = this.form.controls['contrasena'];
-    this.nombre = this.form.controls['nombre'];
+    this.password = this.form.controls['password'];
     this.email = this.form.controls['email'];
-    this.telefono = this.form.controls['telefono'];
-    this.idstatususuario = this.form.controls['idstatususuario'];
   }
 
   ngOnInit() {
     this.obtenerEstatusUsuarios();
     this.obtenerRoles();
   }
-  
+
   obtenerRoles() {
     // Obtiene Roles de Usuario
     this.service.obtenerRoles()
@@ -95,14 +86,10 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
     if (this.form.valid) {
       this.service
         .addUser({
-                idrol: values.idrol,
+                Rol_idRol: values.Rol_idRol,
                 usuario: values.usuario,
-                contrasena: values.contrasena,
-                nombre: values.nombre,
-                email: values.email,
-                telefono: values.telefono,
-                idstatususuario: values.idstatususuario,
-                emailsms: '',
+                password: values.password,
+                email: values.email
             })
         .subscribe(
             (data: any) => {
@@ -114,21 +101,3 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
