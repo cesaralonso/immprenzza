@@ -13,6 +13,8 @@ const routes: Routes = [
     children: [
       { path: 'users', component: Users },
       { path: 'groups', component: GroupsComponent },
+      { path: 'modulos', component: ModulosComponent },
+      { path: 'permisos', component: PermisosComponent },
     ]
   }
 ];

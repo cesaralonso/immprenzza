@@ -38,7 +38,20 @@ export const routes: Routes = [
       { path: 'ui', loadChildren: './ui/ui.module#UiModule' },
       { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
       { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-      { path: 'obras', loadChildren: './obras/obras.module#ObrasModule', canActivateChild: [AuthGuard] },
+      { path: 'checkouts', loadChildren: './checkouts/checkouts.module#CheckoutsModule', 
+        canActivateChild: [AuthGuard] },
+      { path: 'clientes', loadChildren: './clientes/clientes.module#ClientesModule', 
+        canActivateChild: [AuthGuard] },
+      { path: 'empleados', loadChildren: './empleados/empleados.module#EmpleadosModule', 
+        canActivateChild: [AuthGuard] },
+      { path: 'ordenes', loadChildren: './ordenes/ordenes.module#OrdenesModule', 
+        canActivateChild: [AuthGuard] },
+      { path: 'puestos', loadChildren: './puestos/puestos.module#PuestosModule', 
+        canActivateChild: [AuthGuard] },
+      { path: 'tipotrabajos', loadChildren: './tipotrabajos/tipotrabajos.module#TipotrabajosModule', 
+        canActivateChild: [AuthGuard] },
+      { path: 'trabajos', loadChildren: './trabajos/trabajos.module#TrabajosModule', 
+        canActivateChild: [AuthGuard] },
       { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivateChild: [AuthGuard] }
     ]
   }

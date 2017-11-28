@@ -15,10 +15,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'obras',
+        path: 'checkouts',
         data: {
           menu: {
-            title: 'general.menu.obras',
+            title: 'general.menu.checkouts',
             icon: 'ion-social-buffer',
             selected: false,
             expanded: false,
@@ -27,10 +27,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'budgets',
+        path: 'clientes',
         data: {
           menu: {
-            title: 'general.menu.presupuesto',
+            title: 'general.menu.clientes',
             icon: 'ion-cash',
             selected: false,
             expanded: false,
@@ -39,10 +39,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'expenses',
+        path: 'empleados',
         data: {
           menu: {
-            title: 'general.menu.gastos',
+            title: 'general.menu.empleados',
             icon: 'ion-social-usd-outline',
             selected: false,
             expanded: false,
@@ -51,10 +51,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'costs',
+        path: 'ordenes',
         data: {
           menu: {
-            title: 'general.menu.costos',
+            title: 'general.menu.ordenes',
             icon: 'ion-social-usd',
             selected: false,
             expanded: false,
@@ -63,10 +63,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'categories',
+        path: 'puestos',
         data: {
           menu: {
-            title: 'general.menu.categorias',
+            title: 'general.menu.puestos',
             icon: 'ion-android-list',
             selected: false,
             expanded: false,
@@ -75,10 +75,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'materials',
+        path: 'tipotrabajos',
         data: {
           menu: {
-            title: 'general.menu.materiales',
+            title: 'general.menu.tipotrabajos',
             icon: 'ion-cube',
             selected: false,
             expanded: false,
@@ -87,10 +87,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'reports',
+        path: 'trabajos',
         data: {
           menu: {
-            title: 'general.menu.reportes',
+            title: 'general.menu.trabajos',
             icon: 'ion-ios-list-outline',
             selected: false,
             expanded: false,
@@ -135,10 +135,10 @@ export const PAGES_MENU = [
             }
           },
           {
-            path: 'social-reasons',
+            path: 'permisos',
             data: {
               menu: {
-                title: 'general.menu.razones',
+                title: 'general.menu.permisos',
                 icon: 'ion-person-stalker',
                 selected: false,
                 expanded: false,
@@ -147,22 +147,10 @@ export const PAGES_MENU = [
             }
           },
           {
-            path: 'tipo-obra',
+            path: 'modulos',
             data: {
               menu: {
-                title: 'general.menu.tipo-obra',
-                icon: 'ion-social-buffer',
-                selected: false,
-                expanded: false,
-                order: 3
-              }
-            }
-          },
-          {
-            path: 'obra-categories',
-            data: {
-              menu: {
-                title: 'general.menu.obra-categories',
+                title: 'general.menu.modulos',
                 icon: 'ion-social-buffer',
                 selected: false,
                 expanded: false,

@@ -87,7 +87,16 @@
       "bitacora": "Bitácora",
       "razones": "Razones Sociales",
       "tipo-obra": "Tipos de Obra",
-      "obra-categories": "Categorías de Obra"
+      "obra-categories": "Categorías de Obra",
+      "checkouts": "Checkouts",
+      "clientes": "Clientes",
+      "empleados": "Empleados",
+      "ordenes": "Órdenes",
+      "puestos": "Puestos",
+      "tipotrabajos": "Tipo de trabajos",
+      "trabajos": "Trabajos",
+      "modulos": "Módulos",
+
     },
     "created_with": "Created with"
   },
