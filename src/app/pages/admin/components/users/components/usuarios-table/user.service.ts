@@ -16,7 +16,7 @@ export class UserService {
 
     private actionUrl: string;
     private headers: Headers;
-
+    private endPoint: string;    
 
     constructor(
         private _http: Http, 
@@ -25,74 +25,49 @@ export class UserService {
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
+        this.endPoint = `${this._configuration.ServerWithApiUrl}user`;
     }
 
-    addUser = (user: UserInterface): Observable<any> =>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}AgregarUsuario`;
-        const toAdd = JSON.stringify(user);
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <any>response.json())
+
+
+
+    all = () : Observable<UserResponseInterface> => {
+       return this._http.get(this.endPoint)
+           .map((response: Response) => response.json())
+           .catch(this.handleError);
+    }
+
+    findById = ( id ) : Observable<UserResponseInterface> => {
+       return this._http.get(`${this.endPoint}/${id}`)
+           .map((response: Response) => response.json())
+           .catch(this.handleError);
+    }
+
+    create = ( values: UserInterface ) : Observable<UserResponseInterface> => {
+       return this._http.post(this.endPoint, values, { headers: this.headers })
+           .map((response: Response) => response.json())
+           .catch(this.handleError);
+    }
+
+    remove = ( id ): Observable<UserResponseInterface> => {
+        return this._http.delete(`${this.endPoint}/${id}`, { headers: this.headers })
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+    
+    edit = (values: UserInterface): Observable<UserResponseInterface> =>  {
+        return this._http.patch(this.endPoint, values, { headers: this.headers })
+            .map((response: Response) => response.json())
             .catch(this.handleError);
     }
 
-    editUser = (user: UserInterface): Observable<any> =>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}ModificarUsuario`;
-        const toAdd = JSON.stringify(user);
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <any>response.json())
+    obtenerRoles = (): Observable<any> => {
+        return this._http.get(`${this._configuration.ServerWithApiUrl}rol`, { headers: this.headers })
+            .map((response: Response) => response.json())
             .catch(this.handleError);
     }
 
-    getUser = (id: number): Observable<UserResponseInterface[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerUsuario`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        const toAdd = JSON.stringify({
-            idUser: id,
-        });
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <UserResponseInterface[]>response.json())
-            .catch(this.handleError);
-    }
 
-    getAllUsers = (): Observable<UserResponseInterface[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerUsuarios`;
-       
-        const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
-            .map((response: Response) => <UserResponseInterface[]>response.json())
-            .catch(this.handleError);
-    }
-
-    obtenerEstatusUsuarios = (): Observable<any[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerStatusUsuarios`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <any[]>response.json())
-            .catch(this.handleError);
-    }
-
-    obtenerRoles = (): Observable<any[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerRoles`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <any[]>response.json())
-            .catch(this.handleError);
-    }
-
-    getUserAvatar = (id: any): Observable<UserResponseInterface> =>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia/${id}`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <UserResponseInterface>response.json())
-            .catch(this.handleError);
-    }
-
-    deleteUser = (id: string): Observable<UserResponseInterface[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaUsuario/${id}`;
-        return this._http.delete(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <any[]>response.json())
-            .catch(this.handleError);
-    }
 
     private handleError(error: Response) {
         console.error(error);

@@ -1,6 +1,5 @@
 export interface GroupsInterface {
-    idrol?: number;
-    rol: string;
-    descripcion: string;
-    visible?: boolean;
+    idRol?: number;
+    nombre: string;
+    baja?: boolean;
 }

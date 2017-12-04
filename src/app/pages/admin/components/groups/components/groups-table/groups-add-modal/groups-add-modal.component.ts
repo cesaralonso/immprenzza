@@ -22,9 +22,7 @@ export class GroupsAddModalComponent extends DialogComponent<GroupsInterface, an
   form: FormGroup;
   submitted: boolean = false;
 
-  rol: AbstractControl;
-  descripcion: AbstractControl;
-  visible: AbstractControl;
+  nombre: AbstractControl;
 
   constructor(
     private service: GroupsService,
@@ -39,14 +37,10 @@ export class GroupsAddModalComponent extends DialogComponent<GroupsInterface, an
     const credenciales = this.authLocalstorage.getCredentials();
 
     this.form = fb.group({
-      'rol': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'descripcion': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'visible': [''],
+      'nombre': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
     });
 
-    this.rol = this.form.controls['rol'];
-    this.descripcion = this.form.controls['descripcion'];
-    this.visible = this.form.controls['visible'];
+    this.nombre = this.form.controls['nombre'];
   }
 
 
@@ -61,7 +55,7 @@ export class GroupsAddModalComponent extends DialogComponent<GroupsInterface, an
     if (this.form.valid) {
 
       this.service
-        .addGroups(values)
+        .create(values)
         .subscribe(
             (data: any) => {
               this.data = data;

@@ -1,7 +1,5 @@
 export interface UserResponseInterface {
-    idUser?: number;
-    Rol_idRol: number;
-    usuario: string;
-    password: string;
-    email: string;
+    success: any;
+    result: any;
+    message?: string;
 }

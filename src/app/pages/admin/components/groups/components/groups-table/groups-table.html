@@ -13,10 +13,7 @@
                                 <mfDefaultSorter by="rol">Rol</mfDefaultSorter>
                             </th>
                             <th style="width: 30%">
-                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
-                            </th>
-                            <th style="width: 30%">
-                                <mfDefaultSorter by="visible">Visible</mfDefaultSorter>
+                                <mfDefaultSorter by="descripcion">Nombre</mfDefaultSorter>
                             </th>
                         </tr>
                     </thead>
@@ -24,11 +21,10 @@
                         <tr *ngFor="let item of mf.data">
                             <td>
                                 <button (click)="editGroupsModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idrol)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idRol)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                             </td>
                             <td>{{item.rol}}</td>
-                            <td>{{item.descripcion}}</td>
-                            <td>{{item.visible}}</td>
+                            <td>{{item.nombre}}</td>
                         </tr>
                     </tbody>
                     <tfoot>

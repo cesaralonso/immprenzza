@@ -66,7 +66,6 @@ export class PermisosService {
 
     getPermisos = (idPermiso: number): Observable<PermisosInterface> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisosPorIDPermiso`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idpermiso: idPermiso,
         });
@@ -78,10 +77,7 @@ export class PermisosService {
 
     getAllPermisos = (): Observable<PermisosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisos`;
-
-        const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
-
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <PermisosInterface[]>response.json())
             .catch(this.handleError);
     }
@@ -89,7 +85,6 @@ export class PermisosService {
     deletePermisos = (id: string): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bajaPermisos`;
 
-        const credenciales = this.authLocalstorage.getCredentials();
         const toSend = JSON.stringify({
             'idusuario': id,
         });
@@ -101,7 +96,6 @@ export class PermisosService {
 
     autorizarPermiso = (idPermiso: number): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}autorizarPermiso`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idpermiso: idPermiso,
         });
@@ -112,7 +106,6 @@ export class PermisosService {
 
     bloquearPermiso = (idPermiso: number): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}bloquearPermiso`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idpermiso: idPermiso,
         });
@@ -123,7 +116,6 @@ export class PermisosService {
 
     cancelarPermiso = (idPermiso: number): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cancelarPermiso`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idpermiso: idPermiso,
         });
@@ -134,7 +126,6 @@ export class PermisosService {
 
     finalizarPermiso = (idPermiso: number): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}FinalizarPermiso`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idpermiso: idPermiso,
         });
@@ -145,7 +136,6 @@ export class PermisosService {
 
     cambiarEstatusPorIdPermiso = (idPermiso: number, idEstatusPermiso: number): Observable<PermisosResponseInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}cambiarEstatusPorIDPermiso`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idpermiso: idPermiso,
             idestatuspermiso: idEstatusPermiso,
@@ -157,7 +147,6 @@ export class PermisosService {
 
     obtenerPermisosPorIdRazonSocialCliente = (idRazonSocialCliente: number): Observable<PermisosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisosPorIDRazonSocialCliente`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idrazonsocialcliente: idRazonSocialCliente,
         });
@@ -168,7 +157,6 @@ export class PermisosService {
 
     obtenerPermisosPorIdRazonSocialContratista = (idRazonSocialContratista: number): Observable<PermisosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisosPorIDRazonSocialContratista`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idrazonsocialcontratista: idRazonSocialContratista,
         });
@@ -179,7 +167,6 @@ export class PermisosService {
 
     obtenerPermisosPorIdRazonSocialConstructor = (idRazonSocialConstructor: number): Observable<PermisosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisosPorIDRazonSocialConstructor`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idrazonsocialconstructor: idRazonSocialConstructor,
         });
@@ -190,7 +177,6 @@ export class PermisosService {
 
     obtenerPermisosPorIdRazonSocialAsociado = (idRazonSocialAsociado: number): Observable<PermisosInterface[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerPermisosPorIDRazonSocialAsociado`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             idrazonsocialasociado: idRazonSocialAsociado,
         });
@@ -201,24 +187,21 @@ export class PermisosService {
 
     obtenerEstatusPermisos = (): Observable<any[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerEstatusPermisos`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <any[]>response.json())
             .catch(this.handleError);
     }
 
     obtenerRazonesSociales = (): Observable<any[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerRazonesSociales`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <any[]>response.json())
             .catch(this.handleError);
     }
 
     obtenerTipoPermisos = (): Observable<any[]> => {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerTipoPermisos`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
+        return this._http.get(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <any[]>response.json())
             .catch(this.handleError);
     }
@@ -234,7 +217,6 @@ export class PermisosService {
 
     getFiles = (idreferencia: number, proceso: string): Observable<any> =>  {
         this.actionUrl = `${this._configuration.ServerWithApiUrl}ObtenerArchivosPorProcesoPorIdReferencia`;
-        const credenciales = this.authLocalstorage.getCredentials();
         const toAdd = JSON.stringify({
             'idreferencia': idreferencia,
             'proceso': proceso

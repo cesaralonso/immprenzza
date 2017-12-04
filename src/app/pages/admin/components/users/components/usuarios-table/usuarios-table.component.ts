@@ -1,3 +1,4 @@
+import { UserResponseInterface } from './user-response.interface';
 import { ToastrService } from 'ngx-toastr';
 import { UserInterface } from './user.interface';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ import { DialogService } from 'ng2-bootstrap-modal';
 })
 export class UsuariosTable implements OnInit {
 
-    data: UserInterface[];
+    data;
     filterQuery = "";
     rowsOnPage = 10;
     sortBy = "nombre";
@@ -56,7 +57,7 @@ export class UsuariosTable implements OnInit {
       if (window.confirm('¿Estas seguro de querer eliminar este registro?')) {
         console.log('item.id a borrar', id);
 
-        this.service.deleteUser(id)
+        this.service.remove(id)
           .subscribe(
             (data) => this.showToast(data),
             error => console.log(error),
@@ -68,24 +69,24 @@ export class UsuariosTable implements OnInit {
       }
     }
 
-    showToast(data) {
-      if (data.idRespuesta === 0) {
-        this.toastrService.success(data.mensajeRespuesta);
-        this.getAllUsers();
+    showToast(data: UserResponseInterface) {
+      if (data.success) {
+        this.toastrService.success(data.message);
+        this.all();
       } else {
-        this.toastrService.error(data.mensajeRespuesta);
+        this.toastrService.error(data.message);
       }
     }
 
     ngOnInit() {
-        this.getAllUsers();
+        this.all();
     }
     
-    private getAllUsers(): void {
+    private all(): void {
         this.service
-          .getAllUsers()
+          .all()
           .subscribe(
-              (data: UserInterface[]) => this.data = data,
+              (data: UserResponseInterface) => this.data = data.result,
               error => console.log(error),
               () => console.log('Get all Items complete'));
     }

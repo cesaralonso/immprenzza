@@ -17,7 +17,6 @@ import { ToastrService } from 'ngx-toastr';
 export class UserAddModalComponent extends DialogComponent<UserInterface, any> implements OnInit {
 
   _roles: string[];
-  _estatususuarios: string[];
   modalHeader: string;
 
 
@@ -38,11 +37,10 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
               private authLocalstorage: AuthLocalstorage,
               dialogService: DialogService) {
     super(dialogService);
-    this._estatususuarios = [];
     this._roles = [];
 
     this.form = fb.group({
-      'Rol_idRol': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'Rol_idRol': [''],
       'usuario': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'email': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -55,7 +53,6 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
   }
 
   ngOnInit() {
-    this.obtenerEstatusUsuarios();
     this.obtenerRoles();
   }
 
@@ -63,15 +60,7 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
     // Obtiene Roles de Usuario
     this.service.obtenerRoles()
       .subscribe(
-        (data: any) => this._roles = data,
-      );
-  }
-
-  obtenerEstatusUsuarios() {
-    // Obtiene Estatus de Usuarios
-    this.service.obtenerEstatusUsuarios()
-      .subscribe(
-        (data: any) => this._estatususuarios = data,
+         (data: any) => this._roles = data.result,
       );
   }
 
@@ -85,11 +74,11 @@ export class UserAddModalComponent extends DialogComponent<UserInterface, any> i
 
     if (this.form.valid) {
       this.service
-        .addUser({
+        .create({
                 Rol_idRol: values.Rol_idRol,
                 usuario: values.usuario,
                 password: values.password,
-                email: values.email
+                email: values.email,
             })
         .subscribe(
             (data: any) => {

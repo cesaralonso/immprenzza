@@ -1,3 +1,4 @@
+import { GroupsResponseInterface } from './groups-response.interface';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +26,7 @@ export class GroupsTableComponent implements OnInit {
       private service: GroupsService, 
       private modalService: NgbModal, 
       private toastrService: ToastrService,
-      private dialogService: DialogService
+      private dialogService: DialogService,
     ) {
     }
 
@@ -56,7 +57,7 @@ export class GroupsTableComponent implements OnInit {
     onDeleteConfirm(event, id): void {
       if (window.confirm('¿Estas seguro de querer eliminar este registro?')) {
 
-        this.service.deleteGroups(id)
+        this.service.remove(id)
           .subscribe(
             (data) => this.showToast(data),
             error => console.log(error),
@@ -69,23 +70,23 @@ export class GroupsTableComponent implements OnInit {
     }
 
     showToast(data) {
-      if (data.idRespuesta === 0) {
-        this.toastrService.success(data.mensajeRespuesta);
-        this.getAllGroups();
+      if (data.success) {
+        this.toastrService.success(data.message);
+        this.all();
       } else {
-        this.toastrService.error(data.mensajeRespuesta);
+        this.toastrService.error(data.message);
       }
     }
 
     ngOnInit() {
-        this.getAllGroups();
+        this.all();
     }
     
-    private getAllGroups(): void {
+    private all(): void {
         this.service
-          .getAllGroups()
+          .all()
           .subscribe(
-              (data: GroupsInterface[]) => this.data = data,
+              (data: GroupsResponseInterface) => this.data = data.result,
               error => console.log(error),
               () => console.log('Get all Items complete'));
     }

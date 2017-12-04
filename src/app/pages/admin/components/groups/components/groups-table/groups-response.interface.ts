@@ -1,5 +1,5 @@
 export interface GroupsResponseInterface {
-    idRespuesta: number;
-    mensajeRespuesta: string;
-    valorRespuesta: string;
+    success: any;
+    result: any;
+    message?: string;
 }

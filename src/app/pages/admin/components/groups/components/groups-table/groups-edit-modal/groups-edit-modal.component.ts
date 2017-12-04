@@ -1,3 +1,4 @@
+import { GroupsResponseInterface } from './../groups-response.interface';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { AuthLocalstorage } from './../../../../../../../shared/auth-localstorage.service';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -17,10 +18,8 @@ import { ToastrService } from 'ngx-toastr';
 
 export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, any> implements OnInit, GroupsInterface {
 
-  idrol: number; 
-  rol: string;
-  descripcion: string;
-  visible: boolean;
+  idRol: number; 
+  nombre: string;
 
   modalHeader: string;
   id: number;
@@ -31,10 +30,7 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
   form: FormGroup;
   submitted: boolean = false;
 
-  idrolAC: AbstractControl;
-  rolAC: AbstractControl;
-  descripcionAC: AbstractControl;
-  visibleAC: AbstractControl;
+  nombreAC: AbstractControl;
 
   constructor(
     private service: GroupsService,
@@ -46,30 +42,21 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
   ) {
     super(dialogService);
     
-    this.idrol = 0;
-    this.rol = '';
-    this.descripcion = '';
-    this.visible = false;
-        
-    const credenciales = this.authLocalstorage.getCredentials();
+    this.idRol = 0;
+    this.nombre = '';
 
     this.form = fb.group({
-      'idrolAC': this.id,
-      'rolAC': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'descripcionAC': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'visibleAC': [''],
+      'nombreAC': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
     });
 
-    this.rolAC = this.form.controls['rolAC'];
-    this.descripcionAC = this.form.controls['descripcionAC'];
-    this.visibleAC = this.form.controls['visibleAC'];
+    this.nombreAC = this.form.controls['nombreAC'];
   }
 
   ngOnInit() {
     this.service
-      .getGroups(this.id)
+      .findById(this.id)
       .subscribe(
-        (item: GroupsInterface) => this.item = item[1]);
+        (item: GroupsResponseInterface) => this.item = item.result);
   }
   confirm() {
     this.result = this.data;
@@ -79,11 +66,9 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
     this.submitted = true;
     if (this.form.valid) {
       this.service
-        .editGroups({
-          idrol: this.idrol,
-          rol: this.rol,
-          descripcion: this.descripcion,
-          visible: this.visible,
+        .edit({
+          idRol: this.id,
+          nombre: this.nombre,
         })
         .subscribe(
             (data: any) => {
@@ -95,10 +80,9 @@ export class GroupsEditModalComponent extends DialogComponent<GroupsInterface, a
 
   private showToast(data: any, values: GroupsInterface) {
     if (data.success) {
-
-      // this.toastrService.success(data.result);
+      this.toastrService.success(data.message);
     } else {
-      // this.toastrService.error(data.result);
+      this.toastrService.error(data.message);
     }
   }
 

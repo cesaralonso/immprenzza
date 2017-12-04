@@ -6,8 +6,6 @@ import { GroupsInterface } from './groups.interface';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Configuration } from '../../../../../../app.constants';
-
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -16,7 +14,7 @@ export class GroupsService {
 
     private actionUrl: string;
     private headers: Headers;
-
+    private endPoint: string;    
 
     constructor(
         private _http: Http, 
@@ -25,54 +23,37 @@ export class GroupsService {
         private authLocalstorage: AuthLocalstorage ) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
+        this.endPoint = `${this._configuration.ServerWithApiUrl}rol`;
     }
 
-    addGroups = (groups: GroupsInterface): Observable<any> =>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}AgregarRol`;
-        const toAdd = JSON.stringify(groups);
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <any>response.json())
+
+    all = () : Observable<GroupsResponseInterface> => {
+       return this._http.get(this.endPoint)
+           .map((response: Response) => response.json())
+           .catch(this.handleError);
+    }
+
+    findById = ( id ) : Observable<GroupsResponseInterface> => {
+       return this._http.get(`${this.endPoint}/${id}`)
+           .map((response: Response) => response.json())
+           .catch(this.handleError);
+    }
+
+    create = ( values: GroupsInterface ) : Observable<GroupsResponseInterface> => {
+       return this._http.post(this.endPoint, values, { headers: this.headers })
+           .map((response: Response) => response.json())
+           .catch(this.handleError);
+    }
+
+    remove = ( id ): Observable<GroupsResponseInterface> => {
+        return this._http.delete(`${this.endPoint}/${id}`, { headers: this.headers })
+            .map((response: Response) => response.json())
             .catch(this.handleError);
     }
-
-    editGroups = (groups: GroupsInterface): Observable<any> =>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}ModificarRol`;
-        const toAdd = JSON.stringify(groups);
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <any>response.json())
-            .catch(this.handleError);
-    }
-
-    getGroups = (id: number): Observable<GroupsInterface> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerRol`;
-        const credenciales = this.authLocalstorage.getCredentials();
-        const toAdd = JSON.stringify({
-            idrol: id,
-        });
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <GroupsResponseInterface[]>response.json())
-            .catch(this.handleError);
-    }
-
-    getAllGroups = (): Observable<GroupsInterface[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}obtenerRoles`;
-       
-        const credenciales = JSON.stringify(this.authLocalstorage.getCredentials());
-        return this._http.post(this.actionUrl, credenciales, { headers: this.headers })
-            .map((response: Response) => <GroupsInterface[]>response.json())
-            .catch(this.handleError);
-    }
-
-    deleteGroups = (id: string): Observable<GroupsResponseInterface[]> => {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}eliminarRol`;
-       
-        const credenciales = this.authLocalstorage.getCredentials();
-        const toSend = JSON.stringify({
-            'idrol': id,
-        });
-
-        return this._http.post(this.actionUrl, toSend, { headers: this.headers })
-            .map((response: Response) => <any[]>response.json())
+    
+    edit = (values: GroupsInterface): Observable<GroupsResponseInterface> =>  {
+        return this._http.patch(this.endPoint, values, { headers: this.headers })
+            .map((response: Response) => response.json())
             .catch(this.handleError);
     }
 

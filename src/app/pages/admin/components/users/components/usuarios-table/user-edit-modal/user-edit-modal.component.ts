@@ -18,18 +18,14 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
     idUser?: 0;
     Rol_idRol: 0;
     usuario: '';
-    password: '';
     email: '';
 
     data: any;
-
-    _estatususuarios: string[];
 
     form: FormGroup;
     submitted: boolean = false;
     Rol_idRolAC: AbstractControl;
     usuarioAC: AbstractControl;
-    passwordAC: AbstractControl;
     emailAC: AbstractControl;
 
     constructor(
@@ -43,7 +39,6 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
         this.form = fb.group({
           'Rol_idRolAC': [''],
           'usuarioAC': [''],
-          'passwordAC': [''],
           'emailAC': [''],
         });
 
@@ -51,14 +46,10 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
 
         this.Rol_idRolAC = this.form.controls['Rol_idRolAC'];
         this.usuarioAC = this.form.controls['usuarioAC'];
-        this.passwordAC = this.form.controls['passwordAC'];
         this.emailAC = this.form.controls['emailAC'];
-
-        this._estatususuarios = [];
      }
 
     ngOnInit() {
-      this.obtenerEstatusUsuarios();
       this.obtenerRoles();
     }
 
@@ -66,15 +57,7 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
       // Obtiene Roles de Usuario
       this.userService.obtenerRoles()
         .subscribe(
-          (data: any) => this._roles = data,
-        );
-    }
-
-    obtenerEstatusUsuarios() {
-      // Obtiene Estatus de Usuarios
-      this.userService.obtenerEstatusUsuarios()
-        .subscribe(
-          (data: any) => this._estatususuarios = data,
+          (data: any) => this._roles = data.result,
         );
     }
 
@@ -87,11 +70,10 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
       this.submitted = true;
       if (this.form.valid) {
         this.userService
-          .editUser({
+          .edit({
                 idUser: this.idUser,
                 Rol_idRol: this.Rol_idRol,
                 usuario: this.usuario,
-                password: this.password,
                 email: this.email,
             })
           .subscribe((data: any) => {
@@ -102,11 +84,11 @@ export class UserEditModalComponent extends DialogComponent<UserInterface, any> 
     }
 
     private showToast(data: any) {
-      if (data.idRespuesta === 0) {
-        this.toastrService.success(data.mensajeRespuesta);
+      if (data.success) {
+        this.toastrService.success(data.message);
         this.close();
       } else {
-        this.toastrService.error(data.mensajeRespuesta);
+        this.toastrService.error(data.message);
       }
     }
 
